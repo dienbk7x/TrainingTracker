@@ -7,3 +7,15 @@ __TrainingTracker__ is a Rails app designed to aid small companies to track empl
 # Details #
 
 _More info will follow as the app is built._
+
+## Structure ##
+
+* Training
+** Status
+* Document
+** TrainingType
+* Employee
+** Department
+
+The main focus of the app is _Training_ this object relates employees to documents and stores when they were trained, by whom, the training status, and how long until the training expires.
+
