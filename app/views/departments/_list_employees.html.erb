@@ -1,0 +1,17 @@
+<h3>Employees</h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Username</th>
+    <th>Active</th>
+  </tr>
+
+<% @department.employees.each do |employee| %>
+  <tr>
+    <td><%= employee.last_name %>, <%= employee.first_name %></td>
+    <td><%= link_to employee.username, employee %></td>
+    <td><%= employee.active %></td>
+  </tr>
+<% end %>
+</table>

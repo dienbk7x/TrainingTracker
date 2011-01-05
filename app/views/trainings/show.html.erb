@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Document:</b>
+  <%= @training.document.full_name %>
+</p>
+
+<p>
+  <b>Employee:</b>
+  <%= @training.employee.full_name %>
+</p>
+
+<p>
+  <b>Trained on:</b>
+  <%= @training.trained_on %>
+</p>
+
+<p>
+  <b>Trainer:</b>
+  <%= @training.trainer.full_name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= render :partial => 'statuses/status', :locals => { :status => @training.status } %>
+</p>
+
+<p>
+  <b>Expires:</b>
+  <%= @training.expires %>
+</p>
+
+
+<%= link_to 'Edit', edit_training_path(@training) %> |
+<%= link_to 'Back', trainings_path %>

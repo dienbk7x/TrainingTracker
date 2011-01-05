@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Training Types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @training_types.each do |training_type| %>
+  <tr>
+    <td><%= training_type.name %></td>
+    <td><%= link_to 'Show', training_type %></td>
+    <td><%= link_to 'Edit', edit_training_type_path(training_type) %></td>
+    <td><%= link_to 'Destroy', training_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Training type', new_training_type_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  document: 
+  employee: 
+  trained_on: 2011-01-05
+  trainer_id: 1
+  status: 
+  expires: 1
+
+two:
+  document: 
+  employee: 
+  trained_on: 2011-01-05
+  trainer_id: 1
+  status: 
+  expires: 1

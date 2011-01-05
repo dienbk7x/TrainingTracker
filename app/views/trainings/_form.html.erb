@@ -1,0 +1,13 @@
+<% semantic_form_for @training do |form| %>
+	<% form.inputs do %>
+	  <%= form.input :document, :as => 'select', :label_method => :full_name %>
+	  <%= form.input :employee %>
+	  <%= form.input :status %>
+	  <%= form.input :trained_on %>
+	  <%= form.input :trainer_id, :as => 'select', :collection => Employee.where(:active => true, :trainer => true) %>
+	  <%= form.input :expires, :label => 'Expires (months)' %>
+	<% end %>
+	<% form.buttons do %>
+	  <%= form.commit_button %>
+	<% end %>
+<% end %>

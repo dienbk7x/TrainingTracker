@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Employees</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Username</th>
+    <th>Department</th>
+    <th>Trainer</th>
+	<th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @employees.each do |employee| %>
+  <tr>
+    <td><%= employee.last_name %>, <%= employee.first_name %></td>
+    <td><%= employee.username %></td>
+    <td><%= link_to employee.department.name, employee.department %></td>
+    <td><%= employee.trainer %></td>
+	<td><%= employee.active %></td>
+    <td><%= link_to 'Show', employee %></td>
+    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+    <td><%= link_to 'Destroy', employee, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Employee', new_employee_path %>

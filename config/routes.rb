@@ -1,4 +1,16 @@
 TrainingTracker::Application.routes.draw do
+  resources :statuses
+
+  resources :trainings
+
+  resources :training_types
+
+  resources :documents
+
+  resources :employees
+
+  resources :departments
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
