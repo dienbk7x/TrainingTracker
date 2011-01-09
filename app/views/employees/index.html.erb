@@ -18,7 +18,7 @@
   <tr>
     <td><%= employee.last_name %>, <%= employee.first_name %></td>
     <td><%= employee.username %></td>
-    <td><%= link_to employee.department.name, employee.department %></td>
+	<td><%= employee.departments %></td>
     <td><%= employee.trainer %></td>
 	<td><%= employee.active %></td>
     <td><%= link_to 'Show', employee %></td>

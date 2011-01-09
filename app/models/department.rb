@@ -1,5 +1,5 @@
 class Department < ActiveRecord::Base
-  has_many :employees
+  has_and_belongs_to_many :employees
   
   validates_presence_of :name
   validates_uniqueness_of :name

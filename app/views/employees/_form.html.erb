@@ -1,4 +1,11 @@
 <%= semantic_form_for @employee do |f| %>
-	<%= f.inputs :first_name, :last_name, :username, :department, :trainer, :active %>
+	<%= f.inputs do %>
+		<%= f.input :first_name %>
+		<%= f.input :last_name %>
+		<%= f.input :username %>
+		<%= f.input :departments, :as =>:check_boxes %>
+		<%= f.input :trainer %>
+		<%= f.input :active %>
+	<% end %>
 	<%= f.buttons :commit %>
 <% end %>

@@ -12,7 +12,7 @@
 
 <p>
   <b>Department:</b>
-  <%= @employee.department.name %>
+  <%= @employee.departments.concat %>
 </p>
 
 <p>
@@ -25,6 +25,34 @@
   <%= @employee.active %>
 </p>
 
+<h1>Listing trainings</h1>
+
+<table>
+  <tr>
+    <th>Document</th>
+    <th>Trained on</th>
+    <th>Trainer</th>
+    <th>Status</th>
+    <th>Expires</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @employee.trainings.each do |training| %>
+  <tr>
+    <td><%= training.document.full_name %></td>
+    <td><%= training.trained_on %></td>
+    <td><%= (training.trainer ? training.trainer.username : '') %></td>
+    <td><%= render :partial => 'statuses/status', :locals => { :status => training.status } %></td>
+    <td><%= training.expires %></td>
+    <td><%= link_to 'Show', training %></td>
+    <td><%= link_to 'Edit', edit_training_path(training) %></td>
+    <td><%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>
