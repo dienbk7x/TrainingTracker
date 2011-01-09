@@ -4,8 +4,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
     <th>Username</th>
+    <th>Name</th>
     <th>Department</th>
     <th>Trainer</th>
 	<th>Active</th>
@@ -16,12 +16,11 @@
 
 <% @employees.each do |employee| %>
   <tr>
-    <td><%= employee.last_name %>, <%= employee.first_name %></td>
-    <td><%= employee.username %></td>
-	<td><%= employee.departments %></td>
+    <td><%= link_to employee.username, employee %></td>
+	<td><%= employee.full_name %></td>
+	<td><%= render :partial => 'departments', :object => employee.departments %></td>
     <td><%= employee.trainer %></td>
 	<td><%= employee.active %></td>
-    <td><%= link_to 'Show', employee %></td>
     <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
     <td><%= link_to 'Destroy', employee, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

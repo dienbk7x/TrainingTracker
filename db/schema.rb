@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110108010317) do
+ActiveRecord::Schema.define(:version => 20110109160619) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -47,12 +47,6 @@ ActiveRecord::Schema.define(:version => 20110108010317) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "color"
-  end
-
-  create_table "training_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "trainings", :force => true do |t|

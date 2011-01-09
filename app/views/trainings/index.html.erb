@@ -15,7 +15,7 @@
 
 <% @trainings.each do |training| %>
   <tr>
-    <td><%= training.document.full_name %></td>
+    <td><%= link_to training.document.full_name, training.document %></td>
     <td><%= link_to training.employee.full_name, training.employee %></td>
     <td><%= training.trained_on %></td>
     <td><%= (training.trainer ? training.trainer.username : '') %></td>

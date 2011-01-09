@@ -8711,3 +8711,963 @@ NoMethodError (undefined method `department_id' for #<Employee:0x103941188>):
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.9ms)
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.2ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 08:52:41 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+Rendered employees/index.html.erb within layouts/application (96.4ms)
+Completed 200 OK in 157ms (Views: 102.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 08:52:42 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" ORDER BY last_name ASC
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/index.html.erb within layouts/application (25.5ms)
+Completed 200 OK in 44ms (Views: 30.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/employees/2/edit" for 127.0.0.1 at Sun Jan 09 08:52:44 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (25.1ms)
+Rendered employees/edit.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 52ms (Views: 38.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/employees/2" for 127.0.0.1 at Sun Jan 09 08:52:49 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["2", "3"], "trainer"=>"1", "username"=>"BOBJ", "last_name"=>"Bob", "active"=>"1", "first_name"=>"Jim"}, "id"=>"2"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" IN (2, 3))
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (2, 2)
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (3, 2)[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'BOBJ') AND ("employees".id <> 2) LIMIT 1
+Redirected to http://localhost:3000/employees/2
+Completed 302 Found in 155ms
+
+
+Started GET "/employees/2" for 127.0.0.1 at Sun Jan 09 08:52:49 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )
+  [1m[36mTraining Load (0.3ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 2)[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+Rendered statuses/_status.html.erb (2.9ms)
+Rendered employees/show.html.erb within layouts/application (128.2ms)
+Completed 200 OK in 149ms (Views: 133.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/employees/2" for 127.0.0.1 at Sun Jan 09 08:54:23 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+Rendered employees/_departments.html.erb (27.6ms)
+Rendered employees/show.html.erb within layouts/application (42.2ms)
+Completed   in 61ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    1: <% @departments.each do |department| %>
+    2: 	<%= department.name %>
+    3: <% end %>
+  app/views/employees/_departments.html.erb:1:in `_app_views_employees__departments_html_erb___1032993356_2177509220_1616030'
+  app/views/employees/show.html.erb:15:in `_app_views_employees_show_html_erb___1881867432_2178055460_0'
+  app/controllers/employees_controller.rb:18:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (74.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (79.9ms)
+
+
+Started GET "/employees/2" for 127.0.0.1 at Sun Jan 09 08:54:41 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+Rendered employees/_departments.html.erb (4.6ms)
+  [1m[35mTraining Load (0.3ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 2)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+Rendered statuses/_status.html.erb (3.0ms)
+Rendered employees/show.html.erb within layouts/application (128.0ms)
+Completed 200 OK in 147ms (Views: 132.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/employees/2" for 127.0.0.1 at Sun Jan 09 08:54:59 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+Rendered employees/_departments.html.erb (4.9ms)
+  [1m[35mTraining Load (0.3ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 2)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+Rendered statuses/_status.html.erb (2.7ms)
+Rendered employees/show.html.erb within layouts/application (138.2ms)
+Completed 200 OK in 157ms (Views: 143.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 08:55:47 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" ORDER BY last_name ASC
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/index.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 46ms (Views: 32.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 08:56:15 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+Rendered employees/index.html.erb within layouts/application (4.7ms)
+Completed   in 22ms
+
+ActionView::Template::Error (undefined method `departments' for nil:NilClass):
+    18:   <tr>
+    19:     <td><%= employee.last_name %>, <%= employee.first_name %></td>
+    20:     <td><%= employee.username %></td>
+    21: 	<td><%= render :partial => 'departments', :object => @employee.departments %></td>
+    22:     <td><%= employee.trainer %></td>
+    23: 	<td><%= employee.active %></td>
+    24:     <td><%= link_to 'Show', employee %></td>
+  app/views/employees/index.html.erb:21:in `_app_views_employees_index_html_erb__325082021_2178038020_0'
+  app/views/employees/index.html.erb:17:in `each'
+  app/views/employees/index.html.erb:17:in `_app_views_employees_index_html_erb__325082021_2178038020_0'
+  app/controllers/employees_controller.rb:7:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 08:56:25 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" ORDER BY last_name ASC
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+Rendered employees/_departments.html.erb (5.6ms)
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+Rendered employees/_departments.html.erb (1.9ms)
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+Rendered employees/_departments.html.erb (1.7ms)
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/_departments.html.erb (3.2ms)
+Rendered employees/index.html.erb within layouts/application (39.1ms)
+Completed 200 OK in 57ms (Views: 44.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/employees/5" for 127.0.0.1 at Sun Jan 09 09:05:14 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+Rendered employees/_departments.html.erb (1.9ms)
+  [1m[36mTraining Load (0.3ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 5)[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+Rendered statuses/_status.html.erb (2.9ms)
+Rendered employees/show.html.erb within layouts/application (126.2ms)
+Completed 200 OK in 145ms (Views: 131.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/employees/5/edit" for 127.0.0.1 at Sun Jan 09 09:05:18 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered employees/_form.html.erb (22.5ms)
+Rendered employees/edit.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 50ms (Views: 36.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/employees/5" for 127.0.0.1 at Sun Jan 09 09:05:23 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["1", "2"], "trainer"=>"0", "username"=>"DOEB", "last_name"=>"Brenda", "active"=>"1", "first_name"=>"Doe"}, "id"=>"5"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" IN (1, 2))[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments_employees" ("employee_id", "department_id") VALUES (5, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (2, 5)
+  [1m[36mEmployee Load (0.1ms)[0m  [1mSELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'DOEB') AND ("employees".id <> 5) LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE "employees" SET "trainer" = 'f', "updated_at" = '2011-01-09 14:05:23.127601' WHERE ("employees"."id" = 5)
+Redirected to http://localhost:3000/employees/5
+Completed 302 Found in 107ms
+
+
+Started GET "/employees/5" for 127.0.0.1 at Sun Jan 09 09:05:23 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+Rendered employees/_departments.html.erb (10.2ms)
+  [1m[36mTraining Load (0.3ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 5)[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+Rendered statuses/_status.html.erb (3.5ms)
+Rendered employees/show.html.erb within layouts/application (219.4ms)
+Completed 200 OK in 242ms (Views: 224.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 09:05:25 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )
+Rendered employees/_departments.html.erb (4.9ms)
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+Rendered employees/_departments.html.erb (2.6ms)
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+Rendered employees/_departments.html.erb (2.1ms)
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+Rendered employees/_departments.html.erb (2.0ms)
+Rendered employees/index.html.erb within layouts/application (109.7ms)
+Completed 200 OK in 128ms (Views: 114.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/employees/1/edit" for 127.0.0.1 at Sun Jan 09 09:05:28 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (22.4ms)
+Rendered employees/edit.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 50ms (Views: 36.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/employees/1" for 127.0.0.1 at Sun Jan 09 09:05:35 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["3", "4"], "trainer"=>"1", "username"=>"DOEJ", "last_name"=>"Doe", "active"=>"1", "first_name"=>"John"}, "id"=>"1"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" IN (3, 4))
+  [1m[36mDepartment Load (0.1ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (3, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "departments_employees" ("employee_id", "department_id") VALUES (1, 4)[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'DOEJ') AND ("employees".id <> 1) LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE "employees" SET "trainer" = 't', "updated_at" = '2011-01-09 14:05:35.145586' WHERE ("employees"."id" = 1)[0m
+Redirected to http://localhost:3000/employees/1
+Completed 302 Found in 104ms
+
+
+Started GET "/employees/1" for 127.0.0.1 at Sun Jan 09 09:05:35 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+Rendered employees/_departments.html.erb (5.2ms)
+  [1m[35mTraining Load (0.3ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 1)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mStatus Load (1.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+Rendered statuses/_status.html.erb (9.4ms)
+Rendered employees/show.html.erb within layouts/application (197.2ms)
+Completed 200 OK in 228ms (Views: 209.9ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 09:05:48 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" ORDER BY last_name ASC
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+Rendered employees/_departments.html.erb (73.0ms)
+  [1m[35mDepartment Load (0.4ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+Rendered employees/_departments.html.erb (2.6ms)
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+Rendered employees/_departments.html.erb (2.3ms)
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/_departments.html.erb (1.7ms)
+Rendered employees/index.html.erb within layouts/application (106.7ms)
+Completed 200 OK in 125ms (Views: 111.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/employees/1/edit" for 127.0.0.1 at Sun Jan 09 09:05:56 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered employees/_form.html.erb (23.9ms)
+Rendered employees/edit.html.erb within layouts/application (32.9ms)
+Completed 200 OK in 51ms (Views: 38.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/employees/1" for 127.0.0.1 at Sun Jan 09 09:06:00 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["3", "4"], "trainer"=>"0", "username"=>"DOEJ", "last_name"=>"Doe", "active"=>"1", "first_name"=>"John"}, "id"=>"1"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" IN (3, 4))[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+  [1m[36mEmployee Load (0.1ms)[0m  [1mSELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'DOEJ') AND ("employees".id <> 1) LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE "employees" SET "trainer" = 'f', "updated_at" = '2011-01-09 14:06:00.448993' WHERE ("employees"."id" = 1)
+Redirected to http://localhost:3000/employees/1
+Completed 302 Found in 104ms
+
+
+Started GET "/employees/1" for 127.0.0.1 at Sun Jan 09 09:06:00 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+Rendered employees/_departments.html.erb (6.9ms)
+  [1m[36mTraining Load (0.3ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 1)[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+Rendered statuses/_status.html.erb (6.0ms)
+Rendered employees/show.html.erb within layouts/application (203.8ms)
+Completed 200 OK in 229ms (Views: 212.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 09:06:03 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )
+Rendered employees/_departments.html.erb (4.6ms)
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+Rendered employees/_departments.html.erb (2.4ms)
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+Rendered employees/_departments.html.erb (2.9ms)
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+Rendered employees/_departments.html.erb (2.6ms)
+Rendered employees/index.html.erb within layouts/application (103.2ms)
+Completed 200 OK in 121ms (Views: 108.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 09:06:36 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" ORDER BY last_name ASC
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+Rendered employees/_departments.html.erb (6.1ms)
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+Rendered employees/_departments.html.erb (3.9ms)
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+Rendered employees/_departments.html.erb (3.9ms)
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/_departments.html.erb (72.8ms)
+Rendered employees/index.html.erb within layouts/application (114.6ms)
+Completed 200 OK in 133ms (Views: 119.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/departments/2" for 127.0.0.1 at Sun Jan 09 09:06:38 -0500 2011
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )
+Rendered departments/_list_employees.html.erb (21.9ms)
+Rendered departments/show.html.erb within layouts/application (43.2ms)
+Completed 200 OK in 66ms (Views: 57.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 09:07:54 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )
+Rendered employees/_departments.html.erb (6.0ms)
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+Rendered employees/_departments.html.erb (3.3ms)
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+Rendered employees/_departments.html.erb (3.2ms)
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+Rendered employees/_departments.html.erb (2.0ms)
+Rendered employees/index.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 61ms (Views: 46.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/employees/6/edit" for 127.0.0.1 at Sun Jan 09 09:08:01 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (22.2ms)
+Rendered employees/edit.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 50ms (Views: 36.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/employees/6" for 127.0.0.1 at Sun Jan 09 09:08:02 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"trainer"=>"1", "username"=>"SMIE", "last_name"=>"Smith", "active"=>"1", "first_name"=>"Earl"}, "id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".id FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "departments".id FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'SMIE') AND ("employees".id <> 6) LIMIT 1
+  [1m[36mDepartment Load (0.5ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (78.0ms)
+Rendered employees/edit.html.erb within layouts/application (83.0ms)
+Completed 200 OK in 119ms (Views: 88.4ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/employees/6" for 127.0.0.1 at Sun Jan 09 09:08:05 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"trainer"=>"1", "username"=>"SMIE", "last_name"=>"Smith", "active"=>"1", "first_name"=>"Earl"}, "id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".id FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "departments".id FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'SMIE') AND ("employees".id <> 6) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (14.5ms)
+Rendered employees/edit.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 65ms (Views: 25.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/employees/6" for 127.0.0.1 at Sun Jan 09 09:08:06 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"trainer"=>"1", "username"=>"SMIE", "last_name"=>"Smith", "active"=>"1", "first_name"=>"Earl"}, "id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".id FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "departments".id FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'SMIE') AND ("employees".id <> 6) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (13.7ms)
+Rendered employees/edit.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 121ms (Views: 23.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/employees/6" for 127.0.0.1 at Sun Jan 09 09:08:28 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"trainer"=>"1", "username"=>"SMIE", "last_name"=>"Smith", "active"=>"1", "first_name"=>"Earl"}, "id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'SMIE') AND ("employees".id <> 6) LIMIT 1
+Redirected to http://localhost:3000/employees/6
+Completed 302 Found in 20ms
+
+
+Started GET "/employees/6" for 127.0.0.1 at Sun Jan 09 09:08:28 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/_departments.html.erb (2.2ms)
+  [1m[36mTraining Load (0.3ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 6)[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+Rendered statuses/_status.html.erb (2.8ms)
+Rendered employees/show.html.erb within layouts/application (66.9ms)
+Completed 200 OK in 147ms (Views: 134.2ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/employees/6" for 127.0.0.1 at Sun Jan 09 09:08:37 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["1", "4"], "trainer"=>"1", "username"=>"SMIE", "last_name"=>"Smith", "active"=>"1", "first_name"=>"Earl"}, "id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" IN (1, 4))
+  [1m[36mDepartment Load (0.1ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (1, 6)
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (4, 6)[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees"."id" FROM "employees" WHERE ("employees"."username" = 'SMIE') AND ("employees".id <> 6) LIMIT 1
+Redirected to http://localhost:3000/employees/6
+Completed 302 Found in 35ms
+
+
+Started GET "/employees/6" for 127.0.0.1 at Sun Jan 09 09:08:37 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mDepartment Load (0.6ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/_departments.html.erb (107.6ms)
+  [1m[36mTraining Load (0.3ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 6)[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+Rendered statuses/_status.html.erb (3.0ms)
+Rendered employees/show.html.erb within layouts/application (208.8ms)
+Completed 200 OK in 229ms (Views: 214.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/departments/1" for 127.0.0.1 at Sun Jan 09 09:08:40 -0500 2011
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 1 )
+Rendered departments/_list_employees.html.erb (21.4ms)
+Rendered departments/show.html.erb within layouts/application (28.3ms)
+Completed 200 OK in 43ms (Views: 33.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sun Jan 09 09:08:44 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )
+Rendered employees/_departments.html.erb (72.1ms)
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+Rendered employees/_departments.html.erb (3.5ms)
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+Rendered employees/_departments.html.erb (3.4ms)
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+Rendered employees/_departments.html.erb (3.6ms)
+Rendered employees/index.html.erb within layouts/application (108.9ms)
+Completed 200 OK in 127ms (Views: 113.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/departments/2" for 127.0.0.1 at Sun Jan 09 09:08:59 -0500 2011
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )[0m
+Rendered departments/_list_employees.html.erb (20.3ms)
+Rendered departments/show.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 42ms (Views: 33.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/departments" for 127.0.0.1 at Sun Jan 09 09:09:01 -0500 2011
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT "departments".* FROM "departments"
+Rendered departments/index.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 94ms (Views: 16.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/departments/1/edit" for 127.0.0.1 at Sun Jan 09 09:09:09 -0500 2011
+  Processing by DepartmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/departments/1/edit" for 127.0.0.1 at Sun Jan 09 09:09:09 -0500 2011
+  Processing by DepartmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+Rendered departments/_form.html.erb (7.4ms)
+Rendered departments/edit.html.erb within layouts/application (36.5ms)
+Completed 200 OK in 75ms (Views: 66.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/departments/2" for 127.0.0.1 at Sun Jan 09 09:09:17 -0500 2011
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )[0m
+Rendered departments/_list_employees.html.erb (82.9ms)
+Rendered departments/show.html.erb within layouts/application (89.8ms)
+Completed 200 OK in 104ms (Views: 95.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/departments/2" for 127.0.0.1 at Sun Jan 09 09:09:57 -0500 2011
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )[0m
+Rendered departments/_list_employees.html.erb (20.8ms)
+Rendered departments/show.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 42ms (Views: 33.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/employees/2" for 127.0.0.1 at Sun Jan 09 09:11:20 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+Rendered employees/_departments.html.erb (6.0ms)
+  [1m[35mTraining Load (0.3ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 2)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+Rendered statuses/_status.html.erb (3.0ms)
+Rendered employees/show.html.erb within layouts/application (128.7ms)
+Completed 200 OK in 147ms (Views: 133.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/trainings/1/edit" for 127.0.0.1 at Sun Jan 09 09:11:25 -0500 2011
+  Processing by TrainingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/trainings/1/edit" for 127.0.0.1 at Sun Jan 09 09:11:25 -0500 2011
+  Processing by TrainingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTraining Load (0.2ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 1) LIMIT 1
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mDocument Load (0.3ms)[0m  SELECT "documents".* FROM "documents"
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses"
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177972120_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177972120_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177972120_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (144.0ms)
+Rendered trainings/edit.html.erb within layouts/application (165.2ms)
+Completed 200 OK in 190ms (Views: 177.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/trainings" for 127.0.0.1 at Sun Jan 09 09:16:28 -0500 2011
+  Processing by TrainingsController#index as HTML
+  [1m[36mTraining Load (1.0ms)[0m  [1mSELECT "trainings".* FROM "trainings" ORDER BY trained_on ASC[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1[0m
+Rendered statuses/_status.html.erb (3.0ms)
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1
+  [1m[36mEmployee Load (0.1ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mStatus Load (0.1ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+Rendered statuses/_status.html.erb (0.4ms)
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+Rendered statuses/_status.html.erb (0.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+Rendered statuses/_status.html.erb (0.4ms)
+Rendered trainings/index.html.erb within layouts/application (141.0ms)
+Completed 200 OK in 158ms (Views: 145.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/trainings/new" for 127.0.0.1 at Sun Jan 09 09:16:30 -0500 2011
+  Processing by TrainingsController#new as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/trainings/new" for 127.0.0.1 at Sun Jan 09 09:16:30 -0500 2011
+  Processing by TrainingsController#new as HTML
+Completed   in 10ms
+
+NoMethodError (undefined method `trained_on=' for nil:NilClass):
+  app/controllers/trainings_controller.rb:28:in `new'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.2ms)
+
+
+Started GET "/trainings/new" for 127.0.0.1 at Sun Jan 09 09:16:41 -0500 2011
+  Processing by TrainingsController#new as HTML
+  [1m[35mDocument Load (0.3ms)[0m  SELECT "documents".* FROM "documents"
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses"
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179150900_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179150900_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179150900_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (123.8ms)
+Rendered trainings/new.html.erb within layouts/application (128.2ms)
+Completed 200 OK in 239ms (Views: 223.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/trainings/new" for 127.0.0.1 at Sun Jan 09 09:17:38 -0500 2011
+  Processing by TrainingsController#new as HTML
+  [1m[36mDocument Load (0.3ms)[0m  [1mSELECT "documents".* FROM "documents"[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2178364480_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2178364480_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2178364480_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (127.6ms)
+Rendered trainings/new.html.erb within layouts/application (131.8ms)
+Completed 200 OK in 149ms (Views: 136.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/trainings/new" for 127.0.0.1 at Sun Jan 09 09:18:02 -0500 2011
+  Processing by TrainingsController#new as HTML
+  [1m[35mDocument Load (0.3ms)[0m  SELECT "documents".* FROM "documents"
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses"
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179626500_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179626500_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179626500_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (59.6ms)
+Rendered trainings/new.html.erb within layouts/application (63.7ms)
+Completed 200 OK in 154ms (Views: 68.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/trainings/1/edit" for 127.0.0.1 at Sun Jan 09 09:18:42 -0500 2011
+  Processing by TrainingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTraining Load (0.2ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 1) LIMIT 1[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1
+  [1m[36mDocument Load (0.3ms)[0m  [1mSELECT "documents".* FROM "documents"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2178419900_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2178419900_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2178419900_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (122.0ms)
+Rendered trainings/edit.html.erb within layouts/application (126.8ms)
+Completed 200 OK in 147ms (Views: 130.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/trainings/3/edit" for 127.0.0.1 at Sun Jan 09 09:18:47 -0500 2011
+  Processing by TrainingsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mTraining Load (0.2ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 3) LIMIT 1
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mDocument Load (0.3ms)[0m  SELECT "documents".* FROM "documents"
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses"
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177472380_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177472380_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177472380_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (132.5ms)
+Rendered trainings/edit.html.erb within layouts/application (137.2ms)
+Completed 200 OK in 158ms (Views: 141.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/trainings/4/edit" for 127.0.0.1 at Sun Jan 09 09:18:51 -0500 2011
+  Processing by TrainingsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTraining Load (0.2ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 4) LIMIT 1[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mDocument Load (0.3ms)[0m  [1mSELECT "documents".* FROM "documents"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177464140_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177464140_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2177464140_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (133.7ms)
+Rendered trainings/edit.html.erb within layouts/application (138.6ms)
+Completed 200 OK in 159ms (Views: 142.4ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/trainings/4" for 127.0.0.1 at Sun Jan 09 09:19:10 -0500 2011
+  Processing by TrainingsController#update as HTML
+  Parameters: {"commit"=>"Update Training", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "id"=>"4", "training"=>{"document_id"=>"5", "expires"=>"24", "trained_on(1i)"=>"", "trainer_id"=>"", "trained_on(2i)"=>"", "employee_id"=>"6", "trained_on(3i)"=>"", "status_id"=>"1"}}
+  [1m[35mTraining Load (0.2ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 4) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "trainings" SET "updated_at" = '2011-01-09 14:19:10.094520', "status_id" = 1, "trained_on" = NULL, "trainer_id" = NULL WHERE ("trainings"."id" = 4)[0m
+Redirected to http://localhost:3000/trainings/4
+Completed 302 Found in 20ms
+
+
+Started GET "/trainings/4" for 127.0.0.1 at Sun Jan 09 09:19:10 -0500 2011
+  Processing by TrainingsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mTraining Load (0.2ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 4) LIMIT 1
+  [1m[36mDocument Load (0.6ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+Rendered trainings/show.html.erb within layouts/application (42.6ms)
+Completed   in 101ms
+
+ActionView::Template::Error (undefined method `full_name' for nil:NilClass):
+    17: 
+    18: <p>
+    19:   <b>Trainer:</b>
+    20:   <%= @training.trainer.full_name %>
+    21: </p>
+    22: 
+    23: <p>
+  app/views/trainings/show.html.erb:20:in `_app_views_trainings_show_html_erb__1903873712_2179655340_0'
+  app/controllers/trainings_controller.rb:18:in `show'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/trainings/4" for 127.0.0.1 at Sun Jan 09 09:21:27 -0500 2011
+  Processing by TrainingsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTraining Load (0.2ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 4) LIMIT 1[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1
+Rendered statuses/_status.html.erb (2.9ms)
+Rendered trainings/show.html.erb within layouts/application (50.1ms)
+Completed 200 OK in 127ms (Views: 55.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/trainings/4/edit" for 127.0.0.1 at Sun Jan 09 09:21:43 -0500 2011
+  Processing by TrainingsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTraining Load (0.2ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 4) LIMIT 1[0m
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mDocument Load (0.3ms)[0m  [1mSELECT "documents".* FROM "documents"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't') LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."active" = 't') AND ("employees"."trainer" = 't')[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179175580_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:2)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179175580_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:10)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_trainings__form_html_erb___1966291992_2179175580_987710 at /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker/app/views/trainings/_form.html.erb:1)
+Rendered trainings/_form.html.erb (62.5ms)
+Rendered trainings/edit.html.erb within layouts/application (125.8ms)
+Completed 200 OK in 147ms (Views: 129.7ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/trainings/4" for 127.0.0.1 at Sun Jan 09 09:21:44 -0500 2011
+  Processing by TrainingsController#update as HTML
+  Parameters: {"commit"=>"Update Training", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "id"=>"4", "training"=>{"document_id"=>"5", "expires"=>"24", "trained_on(1i)"=>"2011", "trainer_id"=>"", "trained_on(2i)"=>"1", "employee_id"=>"6", "trained_on(3i)"=>"9", "status_id"=>"1"}}
+  [1m[35mTraining Load (0.2ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 4) LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE "trainings" SET "updated_at" = '2011-01-09 14:21:44.689969', "trained_on" = '2011-01-09' WHERE ("trainings"."id" = 4)[0m
+Redirected to http://localhost:3000/trainings/4
+Completed 302 Found in 21ms
+
+
+Started GET "/trainings/4" for 127.0.0.1 at Sun Jan 09 09:21:44 -0500 2011
+  Processing by TrainingsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mTraining Load (0.2ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings"."id" = 4) LIMIT 1
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+Rendered statuses/_status.html.erb (8.7ms)
+Rendered trainings/show.html.erb within layouts/application (169.2ms)
+Completed 200 OK in 188ms (Views: 174.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/trainings" for 127.0.0.1 at Sun Jan 09 09:21:46 -0500 2011
+  Processing by TrainingsController#index as HTML
+  [1m[35mTraining Load (1.3ms)[0m  SELECT "trainings".* FROM "trainings" ORDER BY trained_on ASC
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+Rendered statuses/_status.html.erb (4.5ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mStatus Load (0.8ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+Rendered statuses/_status.html.erb (0.5ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+Rendered statuses/_status.html.erb (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+Rendered statuses/_status.html.erb (0.5ms)
+Rendered trainings/index.html.erb within layouts/application (235.3ms)
+Completed 200 OK in 254ms (Views: 238.8ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/trainings" for 127.0.0.1 at Sun Jan 09 11:03:53 -0500 2011
+  Processing by TrainingsController#index as HTML
+  [1m[35mTraining Load (0.9ms)[0m  SELECT "trainings".* FROM "trainings" ORDER BY trained_on ASC
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+Rendered statuses/_status.html.erb (2.7ms)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mStatus Load (0.1ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+Rendered statuses/_status.html.erb (0.4ms)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+Rendered statuses/_status.html.erb (0.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+Rendered statuses/_status.html.erb (0.5ms)
+Rendered trainings/index.html.erb within layouts/application (144.5ms)
+Completed 200 OK in 161ms (Views: 148.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/documents/5" for 127.0.0.1 at Sun Jan 09 11:04:02 -0500 2011
+  Processing by DocumentsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mTrainingType Load (0.2ms)[0m  [1mSELECT "training_types".* FROM "training_types" WHERE ("training_types"."id" = 4) LIMIT 1[0m
+Rendered documents/show.html.erb within layouts/application (27.1ms)
+Completed 200 OK in 125ms (Views: 45.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/documents/5/edit" for 127.0.0.1 at Sun Jan 09 11:04:05 -0500 2011
+  Processing by DocumentsController#edit as HTML
+  Parameters: {"id"=>"5"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/documents/5/edit" for 127.0.0.1 at Sun Jan 09 11:04:05 -0500 2011
+  Processing by DocumentsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1
+  [1m[36mTrainingType Load (0.2ms)[0m  [1mSELECT "training_types".* FROM "training_types" WHERE ("training_types"."id" = 4) LIMIT 1[0m
+  [1m[35mTrainingType Load (0.2ms)[0m  SELECT "training_types".* FROM "training_types"
+Rendered documents/_form.html.erb (22.7ms)
+Rendered documents/edit.html.erb within layouts/application (50.4ms)
+Completed 200 OK in 93ms (Views: 84.3ms | ActiveRecord: 0.5ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.7ms)[0m  [1mDROP TABLE "training_types"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110109160619')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments_employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.5ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m

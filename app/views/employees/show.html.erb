@@ -12,7 +12,7 @@
 
 <p>
   <b>Department:</b>
-  <%= @employee.departments %>
+  <%= render :partial => 'departments', :object => @employee.departments %>
 </p>
 
 <p>

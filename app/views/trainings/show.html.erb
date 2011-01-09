@@ -17,7 +17,7 @@
 
 <p>
   <b>Trainer:</b>
-  <%= @training.trainer.full_name %>
+  <%= (@training.trainer ? @training.trainer.full_name : '') %>
 </p>
 
 <p>

@@ -25,6 +25,7 @@ class TrainingsController < ApplicationController
   # GET /trainings/new.xml
   def new
     @training = Training.new
+    @training.trained_on = Time.now 
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class TrainingsController < ApplicationController
   # GET /trainings/1/edit
   def edit
     @training = Training.find(params[:id])
+    @training.trained_on ||= Time.now
   end
 
   # POST /trainings
