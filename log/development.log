@@ -8540,3 +8540,174 @@ NoMethodError (undefined method `department_id' for #<Employee:0x103b674f8>):
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.7ms)
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (64.5ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sat Jan 08 19:42:01 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (16.7ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+  [1m[35mDepartment Load (11.3ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )[0m
+Rendered employees/index.html.erb within layouts/application (110.0ms)
+Completed 200 OK in 224ms (Views: 114.8ms | ActiveRecord: 28.6ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Sat Jan 08 19:42:02 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[35mEmployee Load (0.4ms)[0m  SELECT "employees".* FROM "employees" ORDER BY last_name ASC
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/index.html.erb within layouts/application (29.1ms)
+Completed 200 OK in 48ms (Views: 34.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/employees/5/edit" for 127.0.0.1 at Sat Jan 08 19:42:06 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"5"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/employees/5/edit" for 127.0.0.1 at Sat Jan 08 19:42:22 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (79.7ms)
+Rendered employees/edit.html.erb within layouts/application (88.8ms)
+Completed 200 OK in 211ms (Views: 130.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/employees/5/edit" for 127.0.0.1 at Sat Jan 08 19:43:12 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered employees/_form.html.erb (21.9ms)
+Rendered employees/edit.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 48ms (Views: 36.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/employees/5" for 127.0.0.1 at Sat Jan 08 19:43:16 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["3", "4"], "trainer"=>"0", "username"=>"DOEB", "last_name"=>"Brenda", "active"=>"1", "first_name"=>"Doe"}, "id"=>"5"}
+Completed 401 Unauthorized in 0ms
+
+
+Started POST "/employees/5" for 127.0.0.1 at Sat Jan 08 19:43:16 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["3", "4"], "trainer"=>"0", "username"=>"DOEB", "last_name"=>"Brenda", "active"=>"1", "first_name"=>"Doe"}, "id"=>"5"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" IN (3, 4))[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (3, 5)[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "departments_employees" ("employee_id", "department_id") VALUES (5, 4)
+Completed   in 33ms
+
+NoMethodError (undefined method `department_id' for #<Employee:0x103add640>):
+  app/controllers/employees_controller.rb:62:in `update'
+  app/controllers/employees_controller.rb:61:in `update'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (80.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (89.0ms)
+
+
+Started GET "/employees/5/edit" for 127.0.0.1 at Sat Jan 08 19:50:10 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (91.3ms)
+Rendered employees/edit.html.erb within layouts/application (102.4ms)
+Completed 200 OK in 154ms (Views: 108.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/employees/5" for 127.0.0.1 at Sat Jan 08 19:50:14 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["3"], "trainer"=>"0", "username"=>"DOEB", "last_name"=>"Brenda", "active"=>"1", "first_name"=>"Doe"}, "id"=>"5"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1
+  [1m[36mDepartment Load (0.1ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (3, 5)
+Completed   in 31ms
+
+NoMethodError (undefined method `department_id' for #<Employee:0x103b95f10>):
+  app/controllers/employees_controller.rb:62:in `update'
+  app/controllers/employees_controller.rb:61:in `update'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (97.6ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (104.6ms)
+
+
+Started POST "/employees/5" for 127.0.0.1 at Sat Jan 08 20:23:19 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["3"], "trainer"=>"0", "username"=>"DOEB", "last_name"=>"Brenda", "active"=>"1", "first_name"=>"Doe"}, "id"=>"5"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: department_ids, trainer, username, last_name, active, first_name
+Completed   in 19ms
+
+NoMethodError (undefined method `department_id' for #<Employee:0x103bf98f8>):
+  app/controllers/employees_controller.rb:62:in `update'
+  app/controllers/employees_controller.rb:61:in `update'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started GET "/employees/5" for 127.0.0.1 at Sat Jan 08 20:49:27 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mTraining Load (6.5ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 5)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 5) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1[0m
+Rendered statuses/_status.html.erb (3.3ms)
+Rendered employees/show.html.erb within layouts/application (174.7ms)
+Completed 200 OK in 194ms (Views: 173.5ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/employees/5/edit" for 127.0.0.1 at Sat Jan 08 20:49:31 -0500 2011
+  Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+Rendered employees/_form.html.erb (21.6ms)
+Rendered employees/edit.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 49ms (Views: 35.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/employees/5" for 127.0.0.1 at Sat Jan 08 20:49:34 -0500 2011
+  Processing by EmployeesController#update as HTML
+  Parameters: {"commit"=>"Update Employee", "authenticity_token"=>"yAdM0JncMJyWQ2HsZIjd2+95C9F1kIUGePVRVAvGMMs=", "utf8"=>"✓", "employee"=>{"department_ids"=>["2"], "trainer"=>"0", "username"=>"DOEB", "last_name"=>"Brenda", "active"=>"1", "first_name"=>"Doe"}, "id"=>"5"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 5) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 5 )[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments_employees" ("department_id", "employee_id") VALUES (2, 5)
+Completed   in 93ms
+
+NoMethodError (undefined method `department_id' for #<Employee:0x103941188>):
+  app/controllers/employees_controller.rb:62:in `update'
+  app/controllers/employees_controller.rb:61:in `update'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.2ms)

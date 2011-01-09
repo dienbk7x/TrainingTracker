@@ -7,7 +7,7 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem 'formtastic', '>= 1.2.2'
+gem 'formtastic', '>= 1.2.3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

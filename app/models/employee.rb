@@ -3,7 +3,6 @@ class Employee < ActiveRecord::Base
   has_many :trainings
   has_many :documents, :through => :trainings
   
-  
   validates_presence_of :first_name, :last_name, :username, :department_id, 
     :message => "Can not be empty."
   validates_uniqueness_of :username
