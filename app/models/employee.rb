@@ -12,6 +12,6 @@ class Employee < ActiveRecord::Base
     :message => "Username should contain only capital letters with no spaces."
     
   def full_name 
-      "#{last_name}, #{first_name}" 
+      "#{first_name} #{last_name}" 
   end
 end

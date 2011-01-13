@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Document</th>
+	<th>Group</th>
     <th>Employee</th>
     <th>Trained on</th>
     <th>Trainer</th>
@@ -16,6 +17,7 @@
 <% @trainings.each do |training| %>
   <tr>
     <td><%= link_to training.document.full_name, training.document %></td>
+	<td><%= training.document.document_group.display_name %></td>
     <td><%= link_to training.employee.full_name, training.employee %></td>
     <td><%= training.trained_on %></td>
     <td><%= (training.trainer ? training.trainer.username : '') %></td>

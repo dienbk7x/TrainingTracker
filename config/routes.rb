@@ -1,15 +1,16 @@
 TrainingTracker::Application.routes.draw do
-  resources :statuses
+
+  scope "/admin" do
+    resources :statuses
+    resources :departments
+    resources :document_groups
+  end
 
   resources :trainings
-
-  resources :training_types
-
+  match 'trainings/grid/:department' => 'trainings#grid'
   resources :documents
-
   resources :employees
 
-  resources :departments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

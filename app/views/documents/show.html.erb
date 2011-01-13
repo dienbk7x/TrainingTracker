@@ -11,13 +11,8 @@
 </p>
 
 <p>
-  <b>Description:</b>
-  <%= @document.description %>
-</p>
-
-<p>
-  <b>Trainging Type:</b>
-  <%= @document.training_type.name %>
+  <b>Document Group:</b>
+  <%= (@document.document_group ? @document.document_group.display_name : '') %>
 </p>
 
 

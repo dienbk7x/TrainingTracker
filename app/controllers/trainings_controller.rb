@@ -10,6 +10,23 @@ class TrainingsController < ApplicationController
     end
   end
 
+  # GET /trainings/grid/1
+  # GET /trainings/grid/1.xml
+  def grid
+    @department = Department.find(params[:department])
+    
+    @document_groups = DocumentGroup.where('department_id' => params[:department]).includes(:documents => :trainings)
+    @document_groups = @document_groups.order('trainings.trained_on DESC')
+   
+    @employees = Employee.includes(:departments, { :trainings => { :document => :document_group } })
+    @employees = @employees.where('document_groups.department_id' => params[:department]).order('last_name ASC')
+    
+    respond_to do |format|
+      format.html # grid.html.erb
+      format.xml  { render :xml => @trainings }
+    end
+  end
+
   # GET /trainings/1
   # GET /trainings/1.xml
   def show

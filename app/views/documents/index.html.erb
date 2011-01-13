@@ -4,18 +4,16 @@
   <tr>
     <th>Number</th>
     <th>Name</th>
-    <th>Type</th>
-    <th></th>
+    <th>Group</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @documents.each do |document| %>
   <tr>
-    <td><%= document.number %></td>
+    <td><%= link_to document.number, document %></td>
     <td><%= document.name %></td>
-    <td><%= link_to document.training_type.name, document.training_type %></td>
-    <td><%= link_to 'Show', document %></td>
+    <td><%= (document.document_group ? (link_to document.document_group.display_name, document.document_group) : '') %></td>
     <td><%= link_to 'Edit', edit_document_path(document) %></td>
     <td><%= link_to 'Destroy', document, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
