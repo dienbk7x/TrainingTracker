@@ -1,0 +1,58 @@
+<style>
+.rotate {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	height: 250px;
+}
+</style>
+
+<h1><%= @department.name %> Training</h1>
+
+<table border='1'>
+	<tr>
+		<th></th>
+	<% @document_groups.each do |document_group| %>
+		<% if document_group.documents.count > 0 %>
+		<th colspan="<%= document_group.documents.count %>"><%= document_group.name %></th>
+		<% end %>
+	<% end %>
+	</tr>
+	<tr>
+		<th></th>
+	<% @document_groups.each do |document_group| %>
+	<% document_group.documents.each do |document| %>
+		<th class="rotate"><%= document.full_name %></th>
+	<% end %>
+	<% end %>
+	</tr>
+	
+	<% @employees.each do |employee| %>
+	<tr>
+		<td><%= employee.full_name %></td>
+		<% @document_groups.each do |document_group| %>
+		<% document_group.documents.each do |document| %>
+		<% x = false %>
+		<% document.trainings.each do |training| %>
+			<% if training.employee.id == employee.id %>
+			<td style="background-color: #<%= training.status.color %>">
+				<%= link_to training.trained_on, training %>
+			</td>
+				<% x = false %>
+			<% else %>
+				<% x = true %>
+			<% end %>
+		<% end %>
+			<% if x == true %>
+			<td></td>
+			<% end %>
+		<% end %>
+		<% end %>	
+	</tr>
+	<% end %>
+	
+	
+</table>	
+		
+<br />
+
+<%= link_to 'New Training', new_training_path %>
