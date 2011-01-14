@@ -21,6 +21,8 @@ class TrainingsController < ApplicationController
     @employees = Employee.includes(:departments, { :trainings => { :document => :document_group } })
     @employees = @employees.where('document_groups.department_id' => params[:department]).order('last_name ASC')
     
+    @statuses = Status.all
+  
     respond_to do |format|
       format.html # grid.html.erb
       format.xml  { render :xml => @trainings }
@@ -42,7 +44,7 @@ class TrainingsController < ApplicationController
   # GET /trainings/new.xml
   def new
     @training = Training.new
-    @training.trained_on = Time.now 
+    #@training.trained_on = Time.now 
 
     respond_to do |format|
       format.html # new.html.erb

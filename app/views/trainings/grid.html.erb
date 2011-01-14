@@ -1,8 +1,10 @@
 <style>
 .rotate {
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	height: 250px;
+	-webkit-transform: rotate(-65deg);
+	-moz-transform: rotate(-65deg);
+
+	float: 'left';
+	display: 'block';
 }
 </style>
 
@@ -31,11 +33,15 @@
 		<td><%= employee.full_name %></td>
 		<% @document_groups.each do |document_group| %>
 		<% document_group.documents.each do |document| %>
-		<% x = false %>
+    <% x = false %>
 		<% document.trainings.each do |training| %>
 			<% if training.employee.id == employee.id %>
 			<td style="background-color: #<%= training.status.color %>">
-				<%= link_to training.trained_on, training %>
+				<% if training.trained_on %>
+				  <%= link_to training.trained_on, training %>
+				<% else %>
+				  <%= link_to 'No Date', training %>
+				<% end %>
 			</td>
 				<% x = false %>
 			<% else %>
@@ -52,7 +58,60 @@
 	
 	
 </table>	
+
+
+<table border=1 >
+  <thead>
+    <tr>
+      <th colspan='2'></th>
+      <% @employees.each do |employee| %>
+        <th><%= employee.username %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @document_groups.each do |document_group| %>
+      <tr>
+        <th colspan='2'><%= document_group.name %></th>
+        <th colspan='<%= @employees.count %>'></th>
+      </tr>
+      <% document_group.documents.each do |document| %>
+        <tr>
+          <th><%= document.number %></th>
+          <td><%= document.name %></td>
+          <% @employees.each do |employee| %>
+            <td>
+            <% document.trainings.each do |training| %>
+              <% if training.employee.id == employee.id %>
+                <%= training.trained_on %>
+              <% end %>
+            <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan='<%= @employees.count + 2 %>'></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 		
 <br />
 
 <%= link_to 'New Training', new_training_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Legend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @statuses.each do |status| %>
+    <tr style="background-color: #<%= status.color %>">
+      <td><%= status.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

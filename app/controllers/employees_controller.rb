@@ -25,6 +25,7 @@ class EmployeesController < ApplicationController
   # GET /employees/new.xml
   def new
     @employee = Employee.new
+    @employee.active = true
 
     respond_to do |format|
       format.html # new.html.erb

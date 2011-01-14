@@ -25,6 +25,7 @@ class StatusesController < ApplicationController
   # GET /statuses/new.xml
   def new
     @status = Status.new
+    @status.color = '888888'
 
     respond_to do |format|
       format.html # new.html.erb
