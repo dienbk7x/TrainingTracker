@@ -7,7 +7,7 @@ TrainingTracker::Application.routes.draw do
   end
 
   resources :trainings
-  match 'trainings/grid/:department' => 'trainings#grid'
+  match 'training_grid/:department' => 'trainings#grid'
   resources :documents
   resources :employees
 

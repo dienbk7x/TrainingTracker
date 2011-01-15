@@ -1,89 +1,35 @@
 <style>
-.rotate {
-	-webkit-transform: rotate(-65deg);
-	-moz-transform: rotate(-65deg);
-
-	float: 'left';
-	display: 'block';
-}
+	.left {
+		text-align: left;
+	}
 </style>
 
+<% script = '' %>
 <h1><%= @department.name %> Training</h1>
 
-<table border='1'>
-	<tr>
-		<th></th>
-	<% @document_groups.each do |document_group| %>
-		<% if document_group.documents.count > 0 %>
-		<th colspan="<%= document_group.documents.count %>"><%= document_group.name %></th>
-		<% end %>
-	<% end %>
-	</tr>
-	<tr>
-		<th></th>
-	<% @document_groups.each do |document_group| %>
-	<% document_group.documents.each do |document| %>
-		<th class="rotate"><%= document.full_name %></th>
-	<% end %>
-	<% end %>
-	</tr>
-	
-	<% @employees.each do |employee| %>
-	<tr>
-		<td><%= employee.full_name %></td>
-		<% @document_groups.each do |document_group| %>
-		<% document_group.documents.each do |document| %>
-    <% x = false %>
-		<% document.trainings.each do |training| %>
-			<% if training.employee.id == employee.id %>
-			<td style="background-color: #<%= training.status.color %>">
-				<% if training.trained_on %>
-				  <%= link_to training.trained_on, training %>
-				<% else %>
-				  <%= link_to 'No Date', training %>
-				<% end %>
-			</td>
-				<% x = false %>
-			<% else %>
-				<% x = true %>
-			<% end %>
-		<% end %>
-			<% if x == true %>
-			<td></td>
-			<% end %>
-		<% end %>
-		<% end %>	
-	</tr>
-	<% end %>
-	
-	
-</table>	
-
-
-<table border=1 >
+<table class='grid' border='1'>
   <thead>
     <tr>
-      <th colspan='2'></th>
+      <th></th>
       <% @employees.each do |employee| %>
-        <th><%= employee.username %></th>
+        <th class='employee_column'><%= employee.username %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
     <% @document_groups.each do |document_group| %>
       <tr>
-        <th colspan='2'><%= document_group.name %></th>
-        <th colspan='<%= @employees.count %>'></th>
+        <th class='left' colspan='<%= @employees.count + 1 %>'><%= document_group.name %></th>
       </tr>
       <% document_group.documents.each do |document| %>
         <tr>
-          <th><%= document.number %></th>
-          <td><%= document.name %></td>
+          <td><%= document.full_name %></td>
           <% @employees.each do |employee| %>
-            <td>
+            <td id='<%= "d#{document.id}_e#{employee.id}" %>'>
             <% document.trainings.each do |training| %>
               <% if training.employee.id == employee.id %>
-                <%= training.trained_on %>
+                <%= link_to (training.trained_on ? training.trained_on : 'Not Trained'), training %>
+				<% script << "$('#d#{document.id}_e#{employee.id}').css('backgroundColor', '##{training.status.color}'); \n" %>
               <% end %>
             <% end %>
             </td>
@@ -91,11 +37,18 @@
         </tr>
       <% end %>
       <tr>
-        <td colspan='<%= @employees.count + 2 %>'></td>
+        <td colspan='<%= @employees.count + 1 %>'></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= javascript_include_tag("flexigrid") %>
+<script>
+	<%= script %>
+	
+	//$('.grid').flexigrid();
+</script>
 		
 <br />
 
