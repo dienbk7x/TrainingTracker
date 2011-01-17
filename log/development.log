@@ -28160,3 +28160,509 @@ ActionController::RoutingError (No route matches "/stylesheets/formastic_changes
   
 
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:21:08 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.5ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (1.1ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (202.1ms)
+Completed 200 OK in 242ms (Views: 203.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:21:09 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/employees/1" for 127.0.0.1 at Sun Jan 16 20:21:21 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 1 )[0m
+Rendered employees/_departments.html.erb (5.1ms)
+  [1m[35mTraining Load (0.3ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 1)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+Rendered statuses/_status.html.erb (3.0ms)
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered employees/show.html.erb within layouts/application (73.9ms)
+Completed 200 OK in 167ms (Views: 78.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:21:21 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:21:42 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.5ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (0.9ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (211.5ms)
+Completed 200 OK in 251ms (Views: 213.9ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/documents/1" for 127.0.0.1 at Sun Jan 16 20:21:44 -0500 2011
+  Processing by DocumentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1
+  [1m[36mDocumentGroup Load (0.2ms)[0m  [1mSELECT "document_groups".* FROM "document_groups" WHERE ("document_groups"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.4ms)
+Rendered documents/show.html.erb within layouts/application (35.9ms)
+Completed 200 OK in 141ms (Views: 57.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:21:44 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/documents/2" for 127.0.0.1 at Sun Jan 16 20:21:59 -0500 2011
+  Processing by DocumentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mDocumentGroup Load (0.2ms)[0m  SELECT "document_groups".* FROM "document_groups" WHERE ("document_groups"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered documents/show.html.erb within layouts/application (99.7ms)
+Completed 200 OK in 115ms (Views: 105.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:21:59 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/documents/4" for 127.0.0.1 at Sun Jan 16 20:22:14 -0500 2011
+  Processing by DocumentsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 4) LIMIT 1
+  [1m[36mDocumentGroup Load (0.2ms)[0m  [1mSELECT "document_groups".* FROM "document_groups" WHERE ("document_groups"."id" = 3) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered documents/show.html.erb within layouts/application (34.2ms)
+Completed 200 OK in 55ms (Views: 39.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:22:14 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/employees/6" for 127.0.0.1 at Sun Jan 16 20:22:20 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 6) LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 6 )
+Rendered employees/_departments.html.erb (5.5ms)
+  [1m[36mTraining Load (0.2ms)[0m  [1mSELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 6)[0m
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered employees/show.html.erb within layouts/application (40.4ms)
+Completed 200 OK in 128ms (Views: 46.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:22:20 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/employees/2" for 127.0.0.1 at Sun Jan 16 20:22:23 -0500 2011
+  Processing by EmployeesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT * FROM "departments" INNER JOIN "departments_employees" ON "departments".id = "departments_employees".department_id WHERE ("departments_employees".employee_id = 2 )[0m
+Rendered employees/_departments.html.erb (5.8ms)
+  [1m[35mTraining Load (0.3ms)[0m  SELECT "trainings".* FROM "trainings" WHERE ("trainings".employee_id = 2)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+Rendered statuses/_status.html.erb (2.8ms)
+  [1m[36mDocument Load (0.2ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE ("documents"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+Rendered statuses/_status.html.erb (0.4ms)
+  [1m[35mDocument Load (0.2ms)[0m  SELECT "documents".* FROM "documents" WHERE ("documents"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.1ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+Rendered statuses/_status.html.erb (0.5ms)
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered employees/show.html.erb within layouts/application (149.7ms)
+Completed 200 OK in 168ms (Views: 154.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:22:23 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:27:54 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses"
+  [1m[36mEmployee Load (1.6ms)[0m  [1mSELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC[0m
+  [1m[35mDocumentGroup Load (2.4ms)[0m  SELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (205.2ms)
+Completed 200 OK in 245ms (Views: 205.7ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:28:06 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses"
+  [1m[36mEmployee Load (1.5ms)[0m  [1mSELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC[0m
+  [1m[35mDocumentGroup Load (1.0ms)[0m  SELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.4ms)
+Rendered trainings/grid.html.erb within layouts/application (196.6ms)
+Completed 200 OK in 311ms (Views: 198.8ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:28:06 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:30:28 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses"
+  [1m[36mEmployee Load (1.5ms)[0m  [1mSELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC[0m
+  [1m[35mDocumentGroup Load (0.9ms)[0m  SELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered trainings/grid.html.erb within layouts/application (174.1ms)
+Completed   in 213ms
+
+ActionView::Template::Error (undefined local variable or method `documen' for #<#<Class:0x103f05d30>:0x103f02e28>):
+    23:       </tr>
+    24:       <% document_group.documents.each do |document| %>
+    25:         <tr>
+    26:           <td><%= link_to document.full_name, documen %></td>
+    27:           <% @employees.each do |employee| %>
+    28:             <td id='<%= "d#{document.id}_e#{employee.id}" %>'>
+    29:             <% document.trainings.each do |training| %>
+  app/views/trainings/grid.html.erb:26:in `_app_views_trainings_grid_html_erb___939172987_2180510800_0'
+  app/views/trainings/grid.html.erb:24:in `_app_views_trainings_grid_html_erb___939172987_2180510800_0'
+  app/views/trainings/grid.html.erb:20:in `_app_views_trainings_grid_html_erb___939172987_2180510800_0'
+  app/controllers/trainings_controller.rb:26:in `grid'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.7ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:30:59 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.7ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (0.9ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.2ms)
+Rendered trainings/grid.html.erb within layouts/application (189.1ms)
+Completed 200 OK in 227ms (Views: 190.6ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:30:59 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:35:55 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.6ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (0.9ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.8ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (206.5ms)
+Completed 200 OK in 327ms (Views: 208.3ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:35:55 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.4ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:37:02 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.5ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (1.0ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (209.3ms)
+Completed 200 OK in 333ms (Views: 212.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:37:03 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:42:37 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.6ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (0.9ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (220.9ms)
+Completed 200 OK in 260ms (Views: 222.6ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:42:37 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Sun Jan 16 20:43:03 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.5ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (0.9ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.2ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (198.4ms)
+Completed 200 OK in 240ms (Views: 200.9ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Sun Jan 16 20:43:03 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
