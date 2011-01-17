@@ -19,7 +19,7 @@ class TrainingsController < ApplicationController
     @document_groups = @document_groups.order('trainings.trained_on DESC')
    
     @employees = Employee.includes(:departments, { :trainings => { :document => :document_group } })
-    @employees = @employees.where('document_groups.department_id' => params[:department]).order('last_name ASC')
+    @employees = @employees.where('departments_employees.department_id' => params[:department]).order('last_name ASC')
     
     @statuses = Status.all
   
