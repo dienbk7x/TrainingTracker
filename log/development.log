@@ -28666,3 +28666,286 @@ ActionController::RoutingError (No route matches "/stylesheets/formastic_changes
   
 
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Mon Jan 17 19:03:47 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at Mon Jan 17 19:03:58 -0500 2011
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mStatus Load (0.5ms)[0m  [1mSELECT "statuses".* FROM "statuses"[0m
+  [1m[35mEmployee Load (1.7ms)[0m  SELECT "employees"."id" AS t0_r0, "employees"."last_name" AS t0_r1, "employees"."username" AS t0_r2, "employees"."active" AS t0_r3, "employees"."created_at" AS t0_r4, "employees"."updated_at" AS t0_r5, "employees"."first_name" AS t0_r6, "employees"."trainer" AS t0_r7, "departments"."id" AS t1_r0, "departments"."name" AS t1_r1, "departments"."created_at" AS t1_r2, "departments"."updated_at" AS t1_r3, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8, "documents"."id" AS t3_r0, "documents"."name" AS t3_r1, "documents"."number" AS t3_r2, "documents"."training_type_id" AS t3_r3, "documents"."created_at" AS t3_r4, "documents"."updated_at" AS t3_r5, "documents"."document_group_id" AS t3_r6, "document_groups"."id" AS t4_r0, "document_groups"."name" AS t4_r1, "document_groups"."department_id" AS t4_r2, "document_groups"."created_at" AS t4_r3, "document_groups"."updated_at" AS t4_r4 FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1) ORDER BY last_name ASC
+  [1m[36mDocumentGroup Load (0.9ms)[0m  [1mSELECT "document_groups"."id" AS t0_r0, "document_groups"."name" AS t0_r1, "document_groups"."department_id" AS t0_r2, "document_groups"."created_at" AS t0_r3, "document_groups"."updated_at" AS t0_r4, "documents"."id" AS t1_r0, "documents"."name" AS t1_r1, "documents"."number" AS t1_r2, "documents"."training_type_id" AS t1_r3, "documents"."created_at" AS t1_r4, "documents"."updated_at" AS t1_r5, "documents"."document_group_id" AS t1_r6, "trainings"."id" AS t2_r0, "trainings"."document_id" AS t2_r1, "trainings"."employee_id" AS t2_r2, "trainings"."trained_on" AS t2_r3, "trainings"."trainer_id" AS t2_r4, "trainings"."status_id" AS t2_r5, "trainings"."expires" AS t2_r6, "trainings"."created_at" AS t2_r7, "trainings"."updated_at" AS t2_r8 FROM "document_groups" LEFT OUTER JOIN "documents" ON "documents"."document_group_id" = "document_groups"."id" LEFT OUTER JOIN "trainings" ON "trainings"."document_id" = "documents"."id" WHERE ("document_groups"."department_id" = 1) ORDER BY trainings.trained_on DESC[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.3ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 1) LIMIT 1[0m
+  [1m[35mStatus Load (0.2ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE ("employees"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "statuses".* FROM "statuses" WHERE ("statuses"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(DISTINCT "employees"."id") FROM "employees" LEFT OUTER JOIN "departments_employees" ON "departments_employees"."employee_id" = "employees"."id" LEFT OUTER JOIN "departments" ON "departments"."id" = "departments_employees"."department_id" LEFT OUTER JOIN "trainings" ON "trainings"."employee_id" = "employees"."id" LEFT OUTER JOIN "documents" ON "documents"."id" = "trainings"."document_id" LEFT OUTER JOIN "document_groups" ON "document_groups"."id" = "documents"."document_group_id" WHERE ("departments_employees"."department_id" = 1)[0m
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered trainings/grid.html.erb within layouts/application (319.2ms)
+Completed 200 OK in 440ms (Views: 355.0ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Mon Jan 17 19:03:59 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddAncestryToDepartments (20110118012039)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "departments" ADD "ancestry" varchar(255)[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_departments_on_ancestry" ON "departments" ("ancestry")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110118012039')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_departments_on_ancestry')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+
+
+Started GET "/departments" for 127.0.0.1 at Mon Jan 17 20:26:29 -0500 2011
+
+ActionController::RoutingError (No route matches "/departments"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/departments/" for 127.0.0.1 at Mon Jan 17 20:26:33 -0500 2011
+
+ActionController::RoutingError (No route matches "/departments"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/admin/departments/" for 127.0.0.1 at Mon Jan 17 20:26:41 -0500 2011
+  Processing by DepartmentsController#index as HTML
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Completed   in 8ms
+
+NameError (undefined local variable or method `has_ancestry' for #<Class:0x1043d2a20>):
+  app/models/department.rb:3
+  app/controllers/departments_controller.rb:5:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.9ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.0ms)
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mDepartment Load (0.1ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Manufacturing') AND ("departments".id <> 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.4ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Prep') LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "departments" ("updated_at", "ancestry", "name", "created_at") VALUES ('2011-01-18 01:31:53.388429', NULL, 'Prep', '2011-01-18 01:31:53.388429')[0m
+  [1m[35mDepartment Load (0.4ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Prep') AND ("departments".id <> 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT "departments".* FROM "departments" WHERE (ancestry like '2/%' or ancestry = '2')
+  [1m[36mAREL (0.7ms)[0m  [1mUPDATE "departments" SET "updated_at" = '2011-01-18 01:33:15.502345', "ancestry" = '1' WHERE ("departments"."id" = 2)[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT "departments".* FROM "departments"
+
+
+Started GET "/admin/departments/" for 127.0.0.1 at Mon Jan 17 20:33:50 -0500 2011
+  Processing by DepartmentsController#index as HTML
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed   in 7ms
+
+NoMethodError (undefined method `has_ancestry' for #<Class:0x10410ba80>):
+  app/models/department.rb:3
+  app/controllers/departments_controller.rb:5:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.5ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.8ms)
+
+
+Started GET "/admin/departments/" for 127.0.0.1 at Mon Jan 17 20:33:54 -0500 2011
+  Processing by DepartmentsController#index as HTML
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Completed   in 7ms
+
+NoMethodError (undefined method `has_ancestry' for #<Class:0x103e8ac20>):
+  app/models/department.rb:3
+  app/controllers/departments_controller.rb:5:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.2ms)
+
+
+Started GET "/employees" for 127.0.0.1 at Mon Jan 17 20:34:19 -0500 2011
+  Processing by EmployeesController#index as HTML
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees" ORDER BY last_name ASC[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Rendered employees/index.html.erb within layouts/application (13.4ms)
+Completed   in 32ms
+
+ActionView::Template::Error (undefined method `has_ancestry' for #<Class:0x104216060>):
+    18:   <tr>
+    19:     <td><%= link_to employee.username, employee %></td>
+    20: 	<td><%= employee.full_name %></td>
+    21: 	<td><%= render :partial => 'departments', :object => employee.departments %></td>
+    22:     <td><%= employee.trainer %></td>
+    23: 	<td><%= employee.active %></td>
+    24:     <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+  app/models/department.rb:3
+  app/views/employees/index.html.erb:21:in `_app_views_employees_index_html_erb__325082021_2182389600_0'
+  app/views/employees/index.html.erb:17:in `each'
+  app/views/employees/index.html.erb:17:in `_app_views_employees_index_html_erb__325082021_2182389600_0'
+  app/controllers/employees_controller.rb:7:in `index'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.8ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.1ms)
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )[0m
+  [1m[35mDepartment Load (0.1ms)[0m  SELECT "departments".* FROM "departments" WHERE (ancestry like '1/2/%' or ancestry = '1/2')
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM "departments" WHERE ("departments"."id" = 2)[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AddAncestryToDepartments (20110118012039)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_departments_on_ancestry')
+  [1m[36mSQL (0.5ms)[0m  [1mDROP INDEX "index_departments_on_ancestry"[0m
+  [1m[35mSQL (0.4ms)[0m  CREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "ancestry" varchar(255)) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "departments"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_departments")
+  [1m[36mSQL (0.5ms)[0m  [1mDROP TABLE "altered_departments"[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118012039'
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments_employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("document_groups")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("documents")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("statuses")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("trainings")
+
+
+Started GET "/admin/departments/" for 127.0.0.1 at Mon Jan 17 20:36:46 -0500 2011
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.3ms)
+Rendered departments/index.html.erb within layouts/application (73.7ms)
+Completed 200 OK in 134ms (Views: 94.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Mon Jan 17 20:36:46 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/admin/departments/1/edit" for 127.0.0.1 at Mon Jan 17 20:36:50 -0500 2011
+  Processing by DepartmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/admin/departments/1/edit" for 127.0.0.1 at Mon Jan 17 20:36:50 -0500 2011
+  Processing by DepartmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+Rendered departments/_form.html.erb (6.3ms)
+Rendered layouts/header.html.erb (0.5ms)
+Rendered layouts/footer.html.erb (0.2ms)
+Rendered departments/edit.html.erb within layouts/application (41.5ms)
+Completed 200 OK in 56ms (Views: 47.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at Mon Jan 17 20:36:50 -0500 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
