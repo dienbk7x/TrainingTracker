@@ -28949,3 +28949,1520 @@ ActionController::RoutingError (No route matches "/stylesheets/formastic_changes
   
 
 Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "parent_id" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "lft" integer
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "rgt" integer[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110118155924')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments_employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("document_groups")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("documents")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("trainings")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft", "rgt", id[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("parent_id" = 1 ) ORDER BY "lft", "rgt", id
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Manufacturing') AND ("departments".id <> 1) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = 1, "rgt" = 2, "updated_at" = '2011-01-18 16:03:01.683069' WHERE ("departments"."id" = 1)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 11:03:20 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 344ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at 2011-01-18 11:03:23 -0500
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments/new" for 127.0.0.1 at 2011-01-18 11:03:26 -0500
+  Processing by DepartmentsController#new as HTML
+Rendered departments/_form.html.erb (62.5ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 109ms (Views: 93.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at 2011-01-18 11:03:26 -0500
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments/1/edit" for 127.0.0.1 at 2011-01-18 11:03:29 -0500
+  Processing by DepartmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+Rendered departments/_form.html.erb (31.2ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/edit.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at 2011-01-18 11:03:29 -0500
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (15.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "lft" integer, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118155924'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "parent_id" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "lft" integer
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "rgt" integer[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110118155924')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments_employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("document_groups")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("documents")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("trainings")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110118160513')[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft", "rgt", id
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("parent_id" = 1 ) ORDER BY "lft", "rgt", id[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Manufacturing') AND ("departments".id <> 1) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "departments" SET "lft" = 1, "rgt" = 2 WHERE ("departments"."id" = 1)[0m
+
+
+Started GET "/docs" for 127.0.0.1 at 2011-01-18 11:31:29 -0500
+
+ActionController::RoutingError (No route matches "/docs"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/doc/" for 127.0.0.1 at 2011-01-18 11:31:34 -0500
+
+ActionController::RoutingError (No route matches "/doc"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/docs/" for 127.0.0.1 at 2011-01-18 11:31:37 -0500
+
+ActionController::RoutingError (No route matches "/docs"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "departments_employees" ("department_id" integer, "employee_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "document_groups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "department_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "documents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "number" varchar(255), "training_type_id" integer, "created_at" datetime, "updated_at" datetime, "document_group_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "last_name" varchar(255), "username" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime, "first_name" varchar(255), "trainer" boolean) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "color" varchar(255)) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "trainings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "document_id" integer, "employee_id" integer, "trained_on" date, "trainer_id" integer, "status_id" integer, "expires" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110118160513')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110105023735')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110105023825')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110105111144')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110105141748')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110105141834')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110105144438')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110105151408')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110105155134')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110105163727')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110105164444')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110108010317')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110109160619')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110109161335')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110109161758')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110118155924')
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 11:44:49 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered layouts/header.html.erb (15.6ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at 2011-01-18 11:44:49 -0500
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Prep') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT MAX("departments"."rgt") AS max_id FROM "departments"
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "departments" ("name", "parent_id", "lft", "rgt") VALUES ('Prep', NULL, 3, 4)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 1 AND 2 THEN "lft" + 3 - 2 WHEN "lft" BETWEEN 3 AND 3 THEN "lft" + 1 - 3 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 1 AND 2 THEN "rgt" + 3 - 2 WHEN "rgt" BETWEEN 3 AND 3 THEN "rgt" + 1 - 3 ELSE "rgt" END, "parent_id" = CASE WHEN id = 1 THEN 2 ELSE "parent_id" END
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (15.6ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 1 AND 1 THEN "lft" + 3 - 1 WHEN "lft" BETWEEN 2 AND 3 THEN "lft" + 1 - 2 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 1 AND 1 THEN "rgt" + 3 - 1 WHEN "rgt" BETWEEN 2 AND 3 THEN "rgt" + 1 - 2 ELSE "rgt" END, "parent_id" = CASE WHEN id = 1 THEN NULL ELSE "parent_id" END
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 2 AND 2 THEN "lft" + 4 - 2 WHEN "lft" BETWEEN 3 AND 4 THEN "lft" + 2 - 3 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 2 AND 2 THEN "rgt" + 4 - 2 WHEN "rgt" BETWEEN 3 AND 4 THEN "rgt" + 2 - 3 ELSE "rgt" END, "parent_id" = CASE WHEN id = 2 THEN 1 ELSE "parent_id" END[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2) ORDER BY "departments"."lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:25:58 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered departments/index.html.erb within layouts/application (46.9ms)
+Completed   in 78ms
+
+ActionView::Template::Error (undefined method `keys' for #<Array:0x1a625d8>):
+    18: <% end %>
+    19: </table>
+    20: 
+    21: <%= render_tree @departments do |node, child| %>
+    22:   <li><%= node.name %></li>
+    23:   <%= child %>
+    24: <% end %>
+  app/views/departments/index.html.erb:21:in `_app_views_departments_index_html_erb__311551618_13815108_898878835'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:26:22 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at 2011-01-18 12:26:23 -0500
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:26:50 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 328ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at 2011-01-18 12:26:53 -0500
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments/2" for 127.0.0.1 at 2011-01-18 12:26:56 -0500
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mEmployee Load (0.0ms)[0m  SELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )
+Rendered departments/_list_employees.html.erb (93.7ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/show.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 156ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/formastic_changes.css" for 127.0.0.1 at 2011-01-18 12:26:56 -0500
+
+ActionController::RoutingError (No route matches "/stylesheets/formastic_changes.css"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments/2" for 127.0.0.1 at 2011-01-18 12:27:14 -0500
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mEmployee Load (0.0ms)[0m  SELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )
+Rendered departments/_list_employees.html.erb (46.9ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/show.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:27:22 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 62ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:29:16 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered departments/index.html.erb within layouts/application (62.5ms)
+Completed   in 94ms
+
+ActionView::Template::Error (undefined method `arranged' for #<Array:0x1ab26f0>):
+    18: <% end %>
+    19: </table>
+    20: 
+    21: <%= render_tree @departments.arranged do |node, child| %>
+    22:   <li><%= node.name %></li>
+    23:   <%= child %>
+    24: <% end %>
+  app/views/departments/index.html.erb:21:in `_app_views_departments_index_html_erb__869417696_13949052_115722063'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:30:16 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Completed   in 31ms
+
+NoMethodError (undefined method `arranged' for #<Array:0x1904730>):
+  app/controllers/departments_controller.rb:6:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:31:14 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+Migrating to AddDepthToDepartments (20110118173441)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "depth" integer[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110118173441')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments_employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("document_groups")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("documents")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("trainings")
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", COUNT("lft") FROM "departments" GROUP BY "lft"
+ HAVING COUNT("lft") > 1 LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "rgt", COUNT("rgt") FROM "departments" GROUP BY "rgt"
+ HAVING COUNT("rgt") > 1 LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AddDepthToDepartments (20110118173441)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118173441'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (15.6ms)[0m  [1mALTER TABLE "departments" ADD "created_at" datetime[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "updated_at" datetime
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118160513'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "lft" integer, "rgt" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "lft" integer, "rgt" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (15.6ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rgt" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rgt" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118155924'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "parent_id" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "lft" integer
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "rgt" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "depth" integer
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110118155924')[0m
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[35mSQL (0.0ms)[0m  CREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "altered_departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "altered_departments"[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110118160513')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments_employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("document_groups")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("documents")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("trainings")
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft", "rgt", id
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("parent_id" = 1 ) ORDER BY "lft", "rgt", id[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Manufacturing') AND ("departments".id <> 1) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "departments" SET "lft" = 1, "rgt" = 2 WHERE ("departments"."id" = 1)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("parent_id" = 2 ) ORDER BY "lft", "rgt", id
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Prep') AND ("departments".id <> 2) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = 3, "rgt" = 4 WHERE ("departments"."id" = 2)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 2 AND 2 THEN "lft" + 4 - 2 WHEN "lft" BETWEEN 3 AND 4 THEN "lft" + 2 - 3 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 2 AND 2 THEN "rgt" + 4 - 2 WHEN "rgt" BETWEEN 3 AND 4 THEN "rgt" + 2 - 3 ELSE "rgt" END, "parent_id" = CASE WHEN id = 2 THEN 1 ELSE "parent_id" END[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 12:50:54 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (15.6ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 78ms (Views: 31.2ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:09:15 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+
+
+Started GET "/admin/departments/new" for 127.0.0.1 at 2011-01-18 13:09:49 -0500
+  Processing by DepartmentsController#new as HTML
+Rendered departments/_form.html.erb (0.0ms)
+Rendered layouts/header.html.erb (15.6ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/new.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments/1" for 127.0.0.1 at 2011-01-18 13:09:53 -0500
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.0ms)[0m  SELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 1 )
+Rendered departments/_list_employees.html.erb (62.5ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/show.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments/1" for 127.0.0.1 at 2011-01-18 13:10:03 -0500
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mEmployee Load (0.0ms)[0m  SELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 1 )
+Rendered departments/_list_employees.html.erb (31.2ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/show.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:10:04 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments/2" for 127.0.0.1 at 2011-01-18 13:10:08 -0500
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mEmployee Load (0.0ms)[0m  [1mSELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 2 )[0m
+Rendered departments/_list_employees.html.erb (31.2ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments/1" for 127.0.0.1 at 2011-01-18 13:10:10 -0500
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mEmployee Load (0.0ms)[0m  [1mSELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 1 )[0m
+Rendered departments/_list_employees.html.erb (46.9ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "created_at" datetime[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "updated_at" datetime
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118160513'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "lft" integer, "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "lft" integer, "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "depth" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118155924'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (15.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:10:59 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered departments/index.html.erb within layouts/application (0.0ms)
+Completed   in 47ms
+
+ActionView::Template::Error (undefined method `depth' for #<Department:0x1bcb7f0>):
+    10: 
+    11: <% @departments.each do |department| %>
+    12:   <tr>
+    13:     <td><%= department.name %>  <%= department.depth %></td>
+    14:     <td><%= link_to 'Show', department %></td>
+    15:     <td><%= link_to 'Edit', edit_department_path(department) %></td>
+    16:     <td><%= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete %></td>
+  app/views/departments/index.html.erb:13:in `block in _app_views_departments_index_html_erb__869417696_14557956_115722063'
+  app/views/departments/index.html.erb:11:in `each'
+  app/views/departments/index.html.erb:11:in `_app_views_departments_index_html_erb__869417696_14557956_115722063'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "parent_id" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "lft" integer
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "rgt" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "depth" integer
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110118155924')[0m
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[35mSQL (0.0ms)[0m  CREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "altered_departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "altered_departments"[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110118160513')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments_employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("document_groups")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("documents")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("statuses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("trainings")
+  [1m[36mDepartment Load (15.6ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft", "rgt", id[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("parent_id" = 1 ) ORDER BY "lft", "rgt", id
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Manufacturing') AND ("departments".id <> 1) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = 1, "rgt" = 2 WHERE ("departments"."id" = 1)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("parent_id" = 2 ) ORDER BY "lft", "rgt", id[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Prep') AND ("departments".id <> 2) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "departments" SET "lft" = 3, "rgt" = 4 WHERE ("departments"."id" = 2)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mAREL (15.6ms)[0m  UPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 2 AND 2 THEN "lft" + 4 - 2 WHEN "lft" BETWEEN 3 AND 4 THEN "lft" + 2 - 3 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 2 AND 2 THEN "rgt" + 4 - 2 WHEN "rgt" BETWEEN 3 AND 4 THEN "rgt" + 2 - 3 ELSE "rgt" END, "parent_id" = CASE WHEN id = 2 THEN 1 ELSE "parent_id" END
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", COUNT("lft") FROM "departments" GROUP BY "lft"
+ HAVING COUNT("lft") > 1 LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "rgt", COUNT("rgt") FROM "departments" GROUP BY "rgt"
+ HAVING COUNT("rgt") > 1 LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:16:35 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:16:48 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:17:31 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 4) ORDER BY "departments"."lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 2 AND "departments"."rgt" <= 3) ORDER BY "departments"."lft"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments/new" for 127.0.0.1 at 2011-01-18 13:19:24 -0500
+  Processing by DepartmentsController#new as HTML
+Rendered departments/_form.html.erb (15.6ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/new.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 62ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/departments" for 127.0.0.1 at 2011-01-18 13:19:28 -0500
+  Processing by DepartmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PIRwNWnZEfzn8EH9DdQK7xnJ0jkfEIjfRYmi51d1Nyg=", "department"=>{"name"=>"Inspection"}, "commit"=>"Create Department"}
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Inspection') LIMIT 1
+  [1m[36mSQL (15.6ms)[0m  [1mSELECT MAX("departments"."rgt") AS max_id FROM "departments"[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "departments" ("name", "parent_id", "lft", "rgt", "depth") VALUES ('Inspection', NULL, 5, 6, NULL)
+Redirected to http://localhost:3000/admin/departments/3
+Completed 302 Found in 78ms
+
+
+Started GET "/admin/departments/3" for 127.0.0.1 at 2011-01-18 13:19:28 -0500
+  Processing by DepartmentsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1[0m
+  [1m[35mEmployee Load (0.0ms)[0m  SELECT * FROM "employees" INNER JOIN "departments_employees" ON "employees".id = "departments_employees".employee_id WHERE ("departments_employees".department_id = 3 )
+Rendered departments/_list_employees.html.erb (46.9ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:19:30 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 4) ORDER BY "departments"."lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 2 AND "departments"."rgt" <= 3) ORDER BY "departments"."lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 5 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 4 AND 4 THEN "lft" + 6 - 4 WHEN "lft" BETWEEN 5 AND 6 THEN "lft" + 4 - 5 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 4 AND 4 THEN "rgt" + 6 - 4 WHEN "rgt" BETWEEN 5 AND 6 THEN "rgt" + 4 - 5 ELSE "rgt" END, "parent_id" = CASE WHEN id = 3 THEN 1 ELSE "parent_id" END
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 2 AND 3 THEN "lft" + 5 - 3 WHEN "lft" BETWEEN 4 AND 5 THEN "lft" + 2 - 4 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 2 AND 3 THEN "rgt" + 5 - 3 WHEN "rgt" BETWEEN 4 AND 5 THEN "rgt" + 2 - 4 ELSE "rgt" END, "parent_id" = CASE WHEN id = 2 THEN 1 ELSE "parent_id" END
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 2)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:20:22 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 4 AND "departments"."rgt" <= 5) ORDER BY "departments"."lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 2 AND "departments"."rgt" <= 3) ORDER BY "departments"."lft"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", COUNT("lft") FROM "departments" GROUP BY "lft"
+ HAVING COUNT("lft") > 1 LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "rgt", COUNT("rgt") FROM "departments" GROUP BY "rgt"
+ HAVING COUNT("rgt") > 1 LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft" LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", COUNT("lft") FROM "departments" GROUP BY "lft"
+ HAVING COUNT("lft") > 1 LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "rgt", COUNT("rgt") FROM "departments" GROUP BY "rgt"
+ HAVING COUNT("rgt") > 1 LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("rgt" - "lft" = 1) ORDER BY "lft"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 2)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 4 AND "departments"."rgt" <= 5) ORDER BY "departments"."lft"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 2)
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft" LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (15.6ms)[0m  [1mALTER TABLE "departments" ADD "created_at" datetime[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "updated_at" datetime
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118160513'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "lft" integer, "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "lft" integer, "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rgt" integer, "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "depth" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "depth" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110118155924'[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (15.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to CreateStatuses (20110105155134)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "parent_id" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "departments" ADD "lft" integer
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "departments" ADD "rgt" integer[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110118155924')
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "updated_at" datetime, "parent_id" integer, "lft" integer, "rgt" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments")
+  [1m[36mSQL (0.0ms)[0m  [1mDROP TABLE "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "parent_id" integer, "lft" integer, "rgt" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_departments")[0m
+  [1m[35mSQL (0.0ms)[0m  DROP TABLE "altered_departments"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110118160513')[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("document_groups")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("documents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("employees")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("statuses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:51:21 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered departments/index.html.erb within layouts/application (46.9ms)
+Completed   in 391ms
+
+ActionView::Template::Error (undefined method `depth' for #<Department:0x1ab6500>):
+    10: 
+    11: <% @departments.each do |department| %>
+    12:   <tr>
+    13:     <td><%= department.name %>  -<%= department.depth %>-</td>
+    14:     <td><%= link_to 'Show', department %></td>
+    15:     <td><%= link_to 'Edit', edit_department_path(department) %></td>
+    16:     <td><%= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete %></td>
+  app/views/departments/index.html.erb:13:in `block in _app_views_departments_index_html_erb___961035724_13971540_632426502'
+  app/views/departments/index.html.erb:11:in `each'
+  app/views/departments/index.html.erb:11:in `_app_views_departments_index_html_erb___961035724_13971540_632426502'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 13:51:51 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" LEFT OUTER JOIN "departments" AS parent ON "departments"."parent_id" = parent.id WHERE ("departments"."lft" IS NULL OR "departments"."rgt" IS NULL OR "departments"."lft" >= "departments"."rgt" OR ("departments"."parent_id" IS NOT NULL AND ("departments"."lft" <= parent."lft" OR "departments"."rgt" >= parent."rgt"))) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft", "rgt", id[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("parent_id" = 1 ) ORDER BY "lft", "rgt", id
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Manufacturing') AND ("departments".id <> 1) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = 1, "rgt" = 2 WHERE ("departments"."id" = 1)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("parent_id" = 2 ) ORDER BY "lft", "rgt", id[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Prep') AND ("departments".id <> 2) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "departments" SET "lft" = 3, "rgt" = 4 WHERE ("departments"."id" = 2)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("parent_id" = 3 ) ORDER BY "lft", "rgt", id
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments"."id" FROM "departments" WHERE ("departments"."name" = 'Inspection') AND ("departments".id <> 3) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = 5, "rgt" = 6 WHERE ("departments"."id" = 3)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 2 AND 2 THEN "lft" + 4 - 2 WHEN "lft" BETWEEN 3 AND 4 THEN "lft" + 2 - 3 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 2 AND 2 THEN "rgt" + 4 - 2 WHEN "rgt" BETWEEN 3 AND 4 THEN "rgt" + 2 - 3 ELSE "rgt" END, "parent_id" = CASE WHEN id = 2 THEN 1 ELSE "parent_id" END[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 2) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "departments" SET "lft" = CASE WHEN "lft" BETWEEN 4 AND 4 THEN "lft" + 6 - 4 WHEN "lft" BETWEEN 5 AND 6 THEN "lft" + 4 - 5 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 4 AND 4 THEN "rgt" + 6 - 4 WHEN "rgt" BETWEEN 5 AND 6 THEN "rgt" + 4 - 5 ELSE "rgt" END, "parent_id" = CASE WHEN id = 3 THEN 1 ELSE "parent_id" END
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 1) LIMIT 1[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "lft", "rgt", "parent_id" FROM "departments" WHERE ("departments"."id" = 3) LIMIT 1
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:04:33 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:04:46 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m

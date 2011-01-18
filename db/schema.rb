@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110109161758) do
+ActiveRecord::Schema.define(:version => 20110118160513) do
 
   create_table "departments", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "name"
+    t.integer "parent_id"
+    t.integer "lft"
+    t.integer "rgt"
   end
 
   create_table "departments_employees", :id => false, :force => true do |t|
