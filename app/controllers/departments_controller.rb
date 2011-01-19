@@ -3,6 +3,7 @@ class DepartmentsController < ApplicationController
   # GET /departments.xml
   def index
     @departments = Department.all
+    @departments_tree = Department.arrange
 
     respond_to do |format|
       format.html # index.html.erb

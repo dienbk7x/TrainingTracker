@@ -30466,3 +30466,578 @@ Rendered layouts/footer.html.erb (0.0ms)
 Rendered departments/index.html.erb within layouts/application (15.6ms)
 Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
   [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:24:36 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)[0m
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed   in 31ms
+
+ActionView::Template::Error (undefined method `each_with_level' for #<Array:0x1ba1808>):
+    18: <% end %>
+    19: </table>
+    20: 
+    21: <% @departments.each_with_level(@departments) do |o, level| %>
+    22:   <%= o.name %><br />
+    23: <% end %>
+    24: 
+  app/views/departments/index.html.erb:21:in `_app_views_departments_index_html_erb___961035724_14468016_632426502'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:25:29 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed   in 47ms
+
+ActionView::Template::Error (undefined method `root' for #<Array:0x1ab7b80>):
+    18: <% end %>
+    19: </table>
+    20: 
+    21: <%= @departments.root.name %>
+    22: 
+    23: <br />
+    24: 
+  app/views/departments/index.html.erb:21:in `_app_views_departments_index_html_erb___961035724_13975980_632426502'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:27:23 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered departments/index.html.erb within layouts/application (0.0ms)
+Completed   in 31ms
+
+ActionView::Template::Error (wrong number of arguments(1 for 0)):
+    10: 
+    11: <% @departments.each do |department| %>
+    12:   <tr>
+    13:     <td><%= department.name %>  <%= department.level.times('-') %></td>
+    14:     <td><%= link_to 'Show', department %></td>
+    15:     <td><%= link_to 'Edit', edit_department_path(department) %></td>
+    16:     <td><%= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete %></td>
+  app/views/departments/index.html.erb:13:in `times'
+  app/views/departments/index.html.erb:13:in `block in _app_views_departments_index_html_erb___961035724_13289928_632426502'
+  app/views/departments/index.html.erb:11:in `each'
+  app/views/departments/index.html.erb:11:in `_app_views_departments_index_html_erb___961035724_13289928_632426502'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (31.2ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:28:27 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:28:43 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:31:58 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+ERROR: compiling _app_views_departments_index_html_erb___961035724_13235148_632426502 RAISED C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/views/departments/index.html.erb:27: syntax error, unexpected ')', expecting keyword_end
+    }) );@output_buffer.safe_concat('
+        ^
+Function body:           def _app_views_departments_index_html_erb___961035724_13235148_632426502(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "departments/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Listing departments</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+');@output_buffer.append_if_string=  @departments.each do |department| 
+@output_buffer.safe_concat('  <tr>
+    <td>');@output_buffer.append= ( department.name );@output_buffer.safe_concat('</td>
+    <td>');@output_buffer.append= ( link_to 'Show', department );@output_buffer.safe_concat('</td>
+    <td>');@output_buffer.append= ( link_to 'Edit', edit_department_path(department) );@output_buffer.safe_concat('</td>
+    <td>');@output_buffer.append= ( link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete );@output_buffer.safe_concat('</td>
+  </tr>
+'); end 
+@output_buffer.safe_concat('</table>
+
+<br />
+
+');@output_buffer.append= ( link_to 'New Department', new_department_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+');@output_buffer.append= ( f.select :parent_id, nested_set_options(Department, @departments) {|i, level|
+      "#{'–' * level} #{i.name}"
+    }) );@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:255:in `module_eval'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:255:in `compile'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:134:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `block in instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:114:in `_render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:92:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+c:/Ruby192/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/mime_responds.rb:261:in `block in retrieve_response_from_mimes'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/controllers/departments_controller.rb:7:in `index'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:151:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:435:in `_run__123496817__process_action__445951463__callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `run_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `block in instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:120:in `process'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:40:in `process'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal.rb:178:in `block in action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:492:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+c:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered departments/index.html.erb within layouts/application (0.0ms)
+Completed   in 31ms
+
+ActionView::Template::Error (C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/views/departments/index.html.erb:27: syntax error, unexpected ')', expecting keyword_end
+    }) );@output_buffer.safe_concat('
+        ^):
+    24: 
+    25: <%= f.select :parent_id, nested_set_options(Department, @departments) {|i, level|
+    26:       "#{'–' * level} #{i.name}"
+    27:     }) %>
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:32:39 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"
+Rendered departments/index.html.erb within layouts/application (31.2ms)
+Completed   in 62ms
+
+ActionView::Template::Error (undefined method `new_record?' for #<Array:0x194f7d8>):
+    22: 
+    23: <%= link_to 'New Department', new_department_path %>
+    24: 
+    25: <%= nested_set_options(Department, @departments) { |i, level| "#{'–' * level} #{i.name}" } %>
+  app/views/departments/index.html.erb:25:in `_app_views_departments_index_html_erb___961035724_13235424_632426502'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:33:43 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+Rendered departments/index.html.erb within layouts/application (31.2ms)
+Completed   in 62ms
+
+ActionView::Template::Error (undefined method `roots' for #<Array:0xf3fa20>):
+    22: 
+    23: <%= link_to 'New Department', new_department_path %>
+    24: 
+    25: <%= nested_set_options(@departments.roots) { |i, level| "#{'–' * level} #{i.name}" } %>
+  app/views/departments/index.html.erb:25:in `_app_views_departments_index_html_erb___961035724_7942464_632426502'
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:33:52 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 2 AND "departments"."rgt" <= 3) ORDER BY "departments"."lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 4 AND "departments"."rgt" <= 5) ORDER BY "departments"."lft"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 78ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:34:40 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 2 AND "departments"."rgt" <= 3) ORDER BY "departments"."lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 4 AND "departments"."rgt" <= 5) ORDER BY "departments"."lft"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:34:53 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 2 AND "departments"."rgt" <= 3) ORDER BY "departments"."lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 4 AND "departments"."rgt" <= 5) ORDER BY "departments"."lft"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:36:01 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:37:27 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" WHERE ("departments"."parent_id" IS NULL) ORDER BY "lft"
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments" WHERE ("departments"."lft" >= 1 AND "departments"."rgt" <= 6) ORDER BY "departments"."lft"[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:37:36 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+ERROR: compiling _app_views_departments_index_html_erb___961035724_8250312_632426502 RAISED C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/views/departments/index.html.erb:26: unterminated string meets end of file
+C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/views/departments/index.html.erb:26: syntax error, unexpected $end, expecting ')'
+Function body:           def _app_views_departments_index_html_erb___961035724_8250312_632426502(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "departments/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Listing departments</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+');@output_buffer.append_if_string=  @departments.each do |department| 
+@output_buffer.safe_concat('  <tr>
+    <td>');@output_buffer.append= ( department.level );@output_buffer.append= ( department.name );@output_buffer.safe_concat('</td>
+    <td>');@output_buffer.append= ( link_to 'Show', department );@output_buffer.safe_concat('</td>
+    <td>');@output_buffer.append= ( link_to 'Edit', edit_department_path(department) );@output_buffer.safe_concat('</td>
+    <td>');@output_buffer.append= ( link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete );@output_buffer.safe_concat('</td>
+  </tr>
+'); end 
+@output_buffer.safe_concat('</table>
+
+<br />
+
+');@output_buffer.append= ( link_to 'New Department', new_department_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+');@output_buffer.append= ( #nested_set_options(Department) { |i, level| "#{'–' * level} #{i.name}" } );@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:255:in `module_eval'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:255:in `compile'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:134:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `block in instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:114:in `_render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:92:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+c:/Ruby192/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/mime_responds.rb:261:in `block in retrieve_response_from_mimes'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/controllers/departments_controller.rb:7:in `index'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:151:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:435:in `_run__123496817__process_action__445951463__callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `run_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `block in instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:120:in `process'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:40:in `process'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal.rb:178:in `block in action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:492:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+c:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered departments/index.html.erb within layouts/application (0.0ms)
+Completed   in 31ms
+
+ActionView::Template::Error (C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/views/departments/index.html.erb:26: unterminated string meets end of file
+C:/Documents and Settings/rjm/My Documents/Aptana Studio 3 Workspace/TrainingTracker/app/views/departments/index.html.erb:26: syntax error, unexpected $end, expecting ')'):
+    23: <%= link_to 'New Department', new_department_path %>
+    24: 
+    25: <%= #nested_set_options(Department) { |i, level| "#{'–' * level} #{i.name}" } %>
+  app/controllers/departments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (31.2ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:37:41 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 62ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:38:53 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-18 14:38:59 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 2 AND "departments"."rgt" >= 3) AND ("departments".id != 2)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "departments" WHERE ("departments"."lft" <= 4 AND "departments"."rgt" >= 5) AND ("departments".id != 3)[0m
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" ORDER BY "lft"
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-19 08:54:20 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" ORDER BY "lft"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 344ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-19 08:59:04 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" ORDER BY "lft"
+Rendered departments/index.html.erb within layouts/application (46.9ms)
+Completed   in 94ms
+
+ActionView::Template::Error (undefined method `keys' for #<Array:0x220fe18>):
+    23: <%= link_to 'New Department', new_department_path %>
+    24: 
+    25: 
+    26: <%= render_tree @departments do |node, child| %>
+    27:   <li><%= node.name %></li>
+    28:   <%= child %>
+    29: <% end %>
+  app/views/departments/index.html.erb:26:in `_app_views_departments_index_html_erb__804673451_14662164__606391652'
+  app/controllers/departments_controller.rb:8:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-19 08:59:12 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" ORDER BY "lft"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-01-19 08:59:38 -0500
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.0ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mDepartment Load (0.0ms)[0m  SELECT "departments".* FROM "departments" ORDER BY "lft"
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.0ms)
+Rendered departments/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 47ms (Views: 15.6ms | ActiveRecord: 0.0ms)
