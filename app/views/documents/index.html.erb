@@ -1,10 +1,10 @@
-<h1>Listing Documents</h1>
+<h1>All Documents</h1>
 
 <table>
   <tr>
     <th>Number</th>
     <th>Name</th>
-    <th>Group</th>
+    <th>Department</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,7 +13,7 @@
   <tr>
     <td><%= link_to document.number, document %></td>
     <td><%= document.name %></td>
-    <td><%= (document.document_group ? (link_to document.document_group.display_name, document.document_group) : '') %></td>
+    <td><%= (document.department ? (link_to document.department.name, document.department) : '') %></td>
     <td><%= link_to 'Edit', edit_document_path(document) %></td>
     <td><%= link_to 'Destroy', document, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

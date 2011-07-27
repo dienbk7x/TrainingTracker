@@ -1,30 +1,14 @@
-<h1>Listing departments</h1>
+<h1>All Departments</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @departments.each do |department| %>
-  <tr>
-    <td><%= department.name %></td>
-    <td><%= link_to 'Show', department %></td>
-    <td><%= link_to 'Edit', edit_department_path(department) %></td>
-    <td><%= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Department', new_department_path %>
-
+<p id="notice" class="notice"><%= notice %></p>
+<p id="error" class="error"><%= alert %></p>
 
 <%= render_tree @departments_tree do |node, child| %>
-  <li><%= node.name %></li>
+	<li>
+		<%= link_to node.name, department_path(node) %> 
+		<small>(<%= link_to 'U', department_moveleft_path(node) %>/<%= link_to 'D', department_moveright_path(node) %>/<%= link_to 'Edit', edit_department_path(node) %>)</small>
+	</li>
   <%= child %>
 <% end %>
 
+<%= link_to 'New Department', new_department_path %>

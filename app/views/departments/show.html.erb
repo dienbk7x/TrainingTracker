@@ -1,11 +1,24 @@
+<h1>Department Details</h1>
+
 <p id="notice"><%= notice %></p>
 
-<h1>
-  <%= @department.name %>
-</h1>
+<h2>
+  <%= @department.display_name %>
+</h2>
+<p>Sub-departments</p>
+<%= render_tree @descendants do |node, child| %>
+	<li>
+		<%= link_to node.name, department_path(node) %> 
+	</li>
+  <%= child %>
+<% end %>
 <%= link_to 'Edit', edit_department_path(@department) %> |
 <%= link_to 'Back', departments_path %>
 <hr />
 <p>
 	<%= render 'list_employees' %>
+</p>
+<hr />
+<p>
+	<%= render 'list_documents' %>
 </p>

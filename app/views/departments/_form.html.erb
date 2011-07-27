@@ -1,4 +1,8 @@
 <%= semantic_form_for @department do |f| %>
-	<%= f.inputs :name %>
+	<%= f.inputs do %>
+		<%= f.input :name %>
+		<%= f.input :parent, :collection => nested_set_options(Department, @department) { 
+		|i, level| "#{'>' * level} #{i.name}" }, :include_blank => true %>
+	<% end %>
 	<%= f.buttons :commit %>
 <% end %>

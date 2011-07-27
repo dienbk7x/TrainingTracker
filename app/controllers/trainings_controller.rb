@@ -15,11 +15,14 @@ class TrainingsController < ApplicationController
   def grid
     @department = Department.find(params[:department])
     
-    @document_groups = DocumentGroup.where('department_id' => params[:department]).includes(:documents => :trainings)
-    @document_groups = @document_groups.order('trainings.trained_on DESC')
+    @departments = Department.find(params[:department]).self_and_descendants.includes(:documents => :trainings)
+    #@departments = @departments.order('trainings.trained_on DESC')
+    
+    #@groups = Department.where('department_id' => @departments).includes(:documents => :trainings)
+    #@groups = @groups.order('trainings.trained_on DESC')
    
-    @employees = Employee.includes(:departments, { :trainings => { :document => :document_group } })
-    @employees = @employees.where('departments_employees.department_id' => params[:department]).order('last_name ASC')
+    @employees = Employee.includes(:departments, { :trainings => { :document => :department } })
+    @employees = @employees.where('departments_employees.department_id' => @departments).order('last_name ASC')
     
     @statuses = Status.all
   

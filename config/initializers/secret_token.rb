@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-TrainingTracker::Application.config.secret_token = '7e93a9c95ea97307f97c19822ebacdb5326043f3c619eb8161a59d0a618ad3b6d652cc99b9f564dc661edd39a721e565c298b6408d8bf610c44767808e0238cb'
+TrainingTracker2::Application.config.secret_token = '8815ef91a9c3474a54215b11ffa4b2b2d47f6c4268b49de2ff8aa5e508ebeec053bd290c625ed84aa1df34411c46372d516579672b747c4200bef1eb317515bc'

@@ -1,0 +1,17 @@
+<h3>Documents</h3>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+
+<% @department.documents.each do |document| %>
+  <tr>
+    <td><%= link_to document.number, document %></td>
+    <td><%= document.name %></td>
+    <td><%= link_to 'Edit', edit_document_path(document) %></td>
+  </tr>
+<% end %>
+</table>

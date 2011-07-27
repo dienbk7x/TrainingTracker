@@ -12,11 +12,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @document_groups.each do |document_group| %>
+    <% @departments.each do |dept| %>
       <tr>
-        <th class='left' colspan='<%= @employees.count + 1 %>'><%= document_group.name %></th>
+        <th class='left' colspan='<%= @employees.count + 1 %>'><%= dept.display_name %></th>
       </tr>
-      <% document_group.documents.each do |document| %>
+      <% dept.documents.each do |document| %>
         <tr>
           <td><%= link_to document.full_name, document %></td>
           <% @employees.each do |employee| %>

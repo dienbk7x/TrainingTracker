@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
-  before_filter :authenticate, :except => [:index, :show]
-  
-  private
-  
-  def authenticate
-    authenticate_or_request_with_http_basic do |user_name, password|
-      user_name == 'admin' && password == 'password'
+
+  def menu
+    # Retrieve the department tree
+    @departments_tree = Department.arrange
+    
+    # Each department get count of number of training records
+    @departments_tree.each do |d|
+      d.training_count = Training.count.where(d.id = document.department.id)
     end
   end
 end

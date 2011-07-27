@@ -1,4 +1,10 @@
 <%= semantic_form_for @document do |f| %>
-	<%= f.inputs :number, :name, :document_group %>
+	<%= f.inputs do %>
+		<%= f.input :name %>
+		<%= f.input :number %>
+		<%= f.input :department, :collection => nested_set_options(Department, @department) { 
+			|i, level| "#{'>' * level} #{i.name}" }, :include_blank => true %>
+	<% end %>
 	<%= f.buttons :commit %>
 <% end %>
+
