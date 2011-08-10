@@ -11813,3 +11813,174 @@ Served asset /application.js - 500 Internal Server Error
 
 Started GET "/assets/print.css" for 127.0.0.1 at 2011-07-27 15:18:31 -0400
 Served asset /print.css - 304 Not Modified (0ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-08-08 21:49:50 -0400
+  Processing by DepartmentsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `visitor' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007fdf04a324e8>):
+  app/controllers/departments_controller.rb:5:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.5ms)
+
+
+Started GET "/admin/department" for 127.0.0.1 at 2011-08-08 21:49:51 -0400
+
+ActionController::RoutingError (No route matches [GET] "/admin/department"):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/ad" for 127.0.0.1 at 2011-08-08 21:49:53 -0400
+
+ActionController::RoutingError (No route matches [GET] "/ad"):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/a" for 127.0.0.1 at 2011-08-08 21:49:53 -0400
+
+ActionController::RoutingError (No route matches [GET] "/a"):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2011-08-08 21:49:53 -0400
+Served asset /rails.png - 200 OK (21ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-08-08 21:50:00 -0400
+  Processing by DepartmentsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `visitor' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007fdf07024fc0>):
+  app/controllers/departments_controller.rb:5:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.2ms)
+
+
+Started GET "/t" for 127.0.0.1 at 2011-08-08 21:50:42 -0400
+
+ActionController::RoutingError (No route matches [GET] "/t"):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/trainings/" for 127.0.0.1 at 2011-08-08 21:50:44 -0400
+  Processing by TrainingsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `visitor' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007fdf048990f0>):
+  app/controllers/trainings_controller.rb:5:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.2ms)
+
+
+Started GET "/trainings/" for 127.0.0.1 at 2011-08-08 21:51:14 -0400
+  Processing by TrainingsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `visitor' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007fb9aaf1e3f0>):
+  app/controllers/trainings_controller.rb:5:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.9ms)
+
+
+Started GET "/trainings/" for 127.0.0.1 at 2011-08-08 21:51:17 -0400
+  Processing by TrainingsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `visitor' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007fb9ad172960>):
+  app/controllers/trainings_controller.rb:5:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.3ms)
+
+
+Started GET "/trainings/grid/1" for 127.0.0.1 at 2011-08-08 21:53:18 -0400
+  Processing by TrainingsController#grid as HTML
+  Parameters: {"department"=>"1"}
+Completed 500 Internal Server Error in 28ms
+
+NoMethodError (undefined method `visitor' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007fecee17fc90>):
+  app/controllers/trainings_controller.rb:16:in `grid'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.2ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-08-10 00:29:03 -0400
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.1ms)[0m  [1mSELECT "departments".* FROM "departments" [0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" ORDER BY "departments"."lft"
+Rendered departments/index.html.erb within layouts/application (36.3ms)
+Rendered layouts/header.html.erb (0.3ms)
+Rendered layouts/footer.html.erb (0.4ms)
+Completed 200 OK in 105ms (Views: 98.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-08-10 00:29:04 -0400
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/application.css  (5ms)  (pid 7546)
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/blueprint/reset.css  (0ms)  (pid 7546)
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/blueprint/typography.css  (0ms)  (pid 7546)
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/blueprint/grid.css  (0ms)  (pid 7546)
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/blueprint/forms.css  (0ms)  (pid 7546)
+Compiled /usr/local/rvm/gems/ruby-1.9.2-p290/gems/formtastic-2.0.0.rc3/app/assets/stylesheets/formtastic.css  (0ms)  (pid 7546)
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/application.css  (0ms)  (pid 7546)
+Served asset /application.css - 200 OK (101ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-08-10 00:29:04 -0400
+Error compiling asset application.js:
+Sprockets::FileNotFound: couldn't find file 'jquery_ui'
+  (in /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker2/app/assets/javascripts/application.js:9)
+Served asset /application.js - 500 Internal Server Error
+
+
+
+Started GET "/assets/print.css" for 127.0.0.1 at 2011-08-10 00:29:04 -0400
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/print.css  (1ms)  (pid 7546)
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/blueprint/print.css  (0ms)  (pid 7546)
+Compiled ~/Dropbox/Incom/Code/TrainingTracker2/app/assets/stylesheets/print.css  (0ms)  (pid 7546)
+Served asset /print.css - 200 OK (78ms)
+
+
+Started GET "/admin/departments" for 127.0.0.1 at 2011-08-10 00:29:04 -0400
+  Processing by DepartmentsController#index as HTML
+  [1m[36mDepartment Load (0.1ms)[0m  [1mSELECT "departments".* FROM "departments" [0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments" ORDER BY "departments"."lft"
+Rendered departments/index.html.erb within layouts/application (10.1ms)
+Rendered layouts/header.html.erb (0.0ms)
+Rendered layouts/footer.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 15.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2011-08-10 00:29:04 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2011-08-10 00:29:04 -0400
+Error compiling asset application.js:
+Sprockets::FileNotFound: couldn't find file 'jquery_ui'
+  (in /Users/ryanjmclaughlin/Dropbox/Incom/Code/TrainingTracker2/app/assets/javascripts/application.js:9)
+Served asset /application.js - 500 Internal Server Error
+
+
+
+Started GET "/assets/print.css" for 127.0.0.1 at 2011-08-10 00:29:04 -0400
+Served asset /print.css - 200 OK (0ms)
