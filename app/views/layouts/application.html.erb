@@ -11,18 +11,15 @@
 </head>
 <body>
 	<div class="container">
-		<!-- Header -->
-		<div class="span-24">
-			<%= render :file => "layouts/header" %>
-		</div>
+		<a name="top"></a>
+		<!-- Header/Nav -->
+		<%= render :file => "layouts/header" %>
 		
 		<!-- Dynamic Content -->
 		<%= yield %>
-		
-		<!-- Footer -->
-		<div class="span-24">
-			<%= render :file => "layouts/footer" %>
-		</div>
 	</div>
+		
+	<!-- Footer -->
+	<%= render :file => "layouts/footer" %>
 </body>
 </html>

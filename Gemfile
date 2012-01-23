@@ -1,15 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
-gem 'arel', '2.1.4'
+gem 'rails'
+gem 'arel'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :production do
+  gem 'pg'
+end
+group :development, :test do
+  gem 'sqlite3'
+end
 
 # Asset template engines
-gem 'sass-rails', "~> 3.1.0.rc"
+gem 'sass-rails'
 gem 'coffee-script'
 gem 'uglifier'
 
@@ -28,4 +33,5 @@ end
 
 
 gem 'nested_set'
-gem 'formtastic', "~> 2.0.0.rc3"
+gem 'formtastic'
+gem 'less-rails-bootstrap'
