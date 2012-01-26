@@ -1,10 +1,27 @@
-<div class="topbar" data-scrollspy="scrollspy">
+
+
+<div class="topbar">
    <div class="topbar-inner">
-    <div class="container">
+    <div class="container-fluid">
       <a class="brand" href="#">Incom Training</a>
       <ul class="nav">
-        <li class=""><a href="#overview">Departments</a></li>
-        <li class=""><a href="#about">Employees</a></li>
+		<ul class="nav">
+		  <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Training</a>
+            <ul class="dropdown-menu">
+              <% 
+				dept = Department.root.self_and_siblings 
+				dept.each do |d|
+				%>
+				<li><a href="<%= training_path%>/grid/<%= d.id %>"><%= d.name %></a></li>
+				<% end %>
+            </ul>
+          </li>
+        </ul>
+        <li class=""><a href="<%= department_path %>">Departments</a></li>
+        <li class=""><a href="<%= employee_path %>">Employees</a></li>
+		<li class=""><a href="<%= document_path %>">Documents</a></li>
+		
       </ul>
     </div>
   </div>

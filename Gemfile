@@ -33,5 +33,5 @@ end
 
 
 gem 'nested_set'
-gem 'formtastic'
+gem 'formtastic-bootstrap'
 gem 'less-rails-bootstrap'

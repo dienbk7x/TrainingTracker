@@ -2,31 +2,37 @@
 
 <h1><%= @department.name %> Training</h1>
 
-<table class='grid' border='1'>
+<table class='bordered-table'>
   <thead>
     <tr>
       <th></th>
       <% @employees.each do |employee| %>
-        <th class='employee_column'><%= link_to employee.username, employee %></th>
+        <th class='employee_column'><%= link_to employee.username, employee, :title => employee.full_name, :rel => 'twipsy' %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
     <% @departments.each do |dept| %>
       <tr>
-        <th class='left' colspan='<%= @employees.count + 1 %>'><%= dept.display_name %></th>
+        <th class='left' style='background-color:#eee;' colspan='<%= @employees.count + 1 %>'><%= dept.display_name %></th>
       </tr>
       <% dept.documents.each do |document| %>
         <tr>
-          <td><%= link_to document.full_name, document %></td>
+          <td><%= link_to document.number, document, :title => document.name, :rel => 'twipsy', 'data-placement' => 'right' %></td>
           <% @employees.each do |employee| %>
             <td id='<%= "d#{document.id}_e#{employee.id}" %>'>
-            <% document.trainings.each do |training| %>
+			<% i=0 %>
+			<% document.trainings.each do |training| %>
               <% if training.employee.id == employee.id %>
-                <%= link_to (training.trained_on ? training.trained_on : 'Not Trained'), training %>
+                <%= link_to (training.trained_on ? training.trained_on : training.status.name), training %><%= training.trained_on %>
 				<% script << "$('#d#{document.id}_e#{employee.id}').css('backgroundColor', '##{training.status.color}'); \n" %>
-              <% end %>
+				<% i+=1 %>
+			  <% end %>
             <% end %>
+
+			<% if(i == 0 || document.trainings.count == 0 ) %>
+				<%= link_to 'No Training', new_training_path(:employee => employee.id, :document => document.id) %>
+			<% end %>
             </td>
           <% end %>
         </tr>
@@ -35,15 +41,16 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan='<%= @employees.count + 1 %>'><%= link_to 'New Training', new_training_path %></td>
+      <td colspan='<%= @employees.count + 1 %>' style='text-align: right; background-color:#eee;'><%= link_to 'New Training', new_training_path %></td>
     </tr>
   </tfoot>
 </table>
 
 <hr>
-		
-<div class="span-4 prepend-10 last">
-	<table class="box">
+
+<div class="row">		
+<div class="span4 offset4">
+	<table class="condensed-table bordered-table">
 	  <thead>
 	    <tr>
 	      <th>Legend</th>
@@ -57,6 +64,7 @@
 	    <% end %>
 	  </tbody>
 	</table>
+</div>
 </div>
 
 <script>

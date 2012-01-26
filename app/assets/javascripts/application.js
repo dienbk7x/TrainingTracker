@@ -6,6 +6,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery_ui
 //= require twitter/bootstrap
 //= require_tree .
+
+
+
+$(function () {
+  $("a[rel=twipsy]").twipsy({
+    live: true
+  })
+})

@@ -1,12 +1,12 @@
 TrainingTracker2::Application.routes.draw do
 
   scope "/admin" do
-    resources :statuses
-    resources :departments
-      match 'departments/moveleft/:id' => 'departments#moveleft', :as => :department_moveleft
-      match 'departments/moveright/:id' => 'departments#moveright', :as => :department_moveright
   end
-
+  
+  resources :statuses
+  resources :departments
+    match 'departments/moveleft/:id' => 'departments#moveleft', :as => :department_moveleft
+    match 'departments/moveright/:id' => 'departments#moveright', :as => :department_moveright
   resources :trainings
     match 'trainings/grid/:department' => 'trainings#grid'
   resources :documents

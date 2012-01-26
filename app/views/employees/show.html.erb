@@ -13,7 +13,7 @@
 </p>
 
 <p>
-  <b>Department:</b>
+  <b>Departments:</b>
   <%= render :partial => 'departments', :object => @employee.departments %>
 </p>
 
@@ -58,3 +58,5 @@
 <% end %>
 
 </table>
+
+<p><%= link_to 'New Training', new_training_path %></p>

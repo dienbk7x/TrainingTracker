@@ -9,5 +9,6 @@ class ApplicationController < ActionController::Base
     @departments_tree.each do |d|
       d.training_count = Training.count.where(d.id = document.department.id)
     end
+    
   end
 end

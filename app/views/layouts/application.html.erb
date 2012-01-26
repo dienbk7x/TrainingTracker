@@ -3,18 +3,15 @@
 <head>
   <title>TrainingTracker</title>
   <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "print", :media => 'print' %>
-  <!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
-  <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-		<a name="top"></a>
-		<!-- Header/Nav -->
-		<%= render :file => "layouts/header" %>
+	<!-- Header/Nav -->
+	<a name="top"></a>
+	<%= render :file => "layouts/header" %>
 		
+	<div class="fluid-container" style="margin:50px; margin-bottom:50px;">
 		<!-- Dynamic Content -->
 		<%= yield %>
 	</div>

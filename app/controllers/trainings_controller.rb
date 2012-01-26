@@ -48,6 +48,8 @@ class TrainingsController < ApplicationController
   def new
     @training = Training.new
     #@training.trained_on = Time.now 
+    @training.employee = Employee.find(params[:employee])
+    @training.document = Document.find(params[:document])
 
     respond_to do |format|
       format.html # new.html.erb

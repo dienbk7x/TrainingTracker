@@ -1,23 +1,26 @@
-<h1>All Documents</h1>
+<h1>Document Listing</h1>
 
 <table>
-  <tr>
-    <th>Number</th>
-    <th>Name</th>
-    <th>Department</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @documents.each do |document| %>
-  <tr>
-    <td><%= link_to document.number, document %></td>
-    <td><%= document.name %></td>
-    <td><%= (document.department ? (link_to document.department.name, document.department) : '') %></td>
-    <td><%= link_to 'Edit', edit_document_path(document) %></td>
-    <td><%= link_to 'Destroy', document, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<thead>
+	<tr>
+		<th>Number</th>
+		<th>Name</th>
+		<th>Department</th>
+		<th></th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<% @documents.each do |document| %>
+	<tr>
+		<td><%= link_to document.number, document %></td>
+		<td><%= document.name %></td>
+		<td><%= (document.department ? (link_to document.department.display_name, document.department) : '') %></td>
+		<td><%= link_to 'Edit', edit_document_path(document) %></td>
+		<td><%= link_to 'Destroy', document, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
+	</tbody>
 </table>
 
 <br />
