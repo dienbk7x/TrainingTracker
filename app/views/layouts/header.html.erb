@@ -13,14 +13,14 @@
 				dept = Department.root.self_and_siblings 
 				dept.each do |d|
 				%>
-				<li><a href="<%= training_path%>/grid/<%= d.id %>"><%= d.name %></a></li>
+				<li><a href="<%= trainings_path %>/grid/<%= d.id %>"><%= d.name %></a></li>
 				<% end %>
             </ul>
           </li>
         </ul>
-        <li class=""><a href="<%= department_path %>">Departments</a></li>
-        <li class=""><a href="<%= employee_path %>">Employees</a></li>
-		<li class=""><a href="<%= document_path %>">Documents</a></li>
+        <li class=""><a href="<%= departments_path %>">Departments</a></li>
+        <li class=""><a href="<%= employees_path %>">Employees</a></li>
+		<li class=""><a href="<%= documents_path %>">Documents</a></li>
 		
       </ul>
     </div>

@@ -14,7 +14,7 @@
   <tbody>
     <% @departments.each do |dept| %>
       <tr>
-        <th class='left' style='background-color:#eee;' colspan='<%= @employees.count + 1 %>'><%= dept.display_name %></th>
+        <th class='left' style='background-color:#eee;' colspan='<%= @employees.count + 1 %>'><%= link_to dept.display_name, dept %></th>
       </tr>
       <% dept.documents.each do |document| %>
         <tr>
