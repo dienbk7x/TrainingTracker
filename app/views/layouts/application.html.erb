@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Incom Training Tracker</title>
-  <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<title>Incom Training Tracker</title>
+	<%= stylesheet_link_tag "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 	<!-- Header/Nav -->
 	<a name="top"></a>
 	<%= render :file => "layouts/header" %>
 		
-	<div class="fluid-container" style="margin:50px; margin-bottom:50px;">
+	<div class="<%= content_for?(:grid) ? yield(:grid) : 'container' %>" style="margin-top:50px; margin-bottom:50px;">
 		<!-- Dynamic Content -->
 		<%= yield %>
 	</div>

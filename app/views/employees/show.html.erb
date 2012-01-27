@@ -1,62 +1,72 @@
-<h1>Employee Details</h1>
-
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @employee.full_name %>
-</p>
 
-<p>
-  <b>Username:</b>
-  <%= @employee.username %>
-</p>
 
-<p>
-  <b>Departments:</b>
-  <%= render :partial => 'departments', :object => @employee.departments %>
-</p>
+<div class="page-header">
+	<h1><%= @employee.full_name %> <small>Employee Details</small></h1>
+</div>
 
-<p>
-  <b>Trainer:</b>
-  <%= @employee.trainer %>
-</p>
-
-<p>
-  <b>Active:</b>
-  <%= @employee.active %>
-</p>
-
-<p><%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %></p>
-
-<h2>Training</h2>
-
-<table>
-  <tr>
-    <th>Document</th>
-    <th>Trained on</th>
-    <th>Trainer</th>
-    <th>Status</th>
-    <th>Expires</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @employee.trainings.each do |training| %>
-  <tr>
-    <td><%= training.document.full_name %></td>
-    <td><%= training.trained_on %></td>
-    <td><%= (training.trainer ? training.trainer.username : '') %></td>
-    <td><%= render :partial => 'statuses/status', :locals => { :status => training.status } %></td>
-    <td><%= training.expires %></td>
-    <td><%= link_to 'Show', training %></td>
-    <td><%= link_to 'Edit', edit_training_path(training) %></td>
-    <td><%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-
-</table>
-
-<p><%= link_to 'New Training', new_training_path %></p>
+<section>
+<div class="row">
+<div class="grid4 prefix2 well" style="">
+	<h3>Info (<%= link_to 'Edit', edit_employee_path(@employee) %>)</h3>
+	<p>
+		<b>Name:</b>
+		<%= @employee.full_name %>
+	</p>
+	<p>
+		<b>Username:</b>
+		<%= @employee.username %>
+	</p>
+	<p>
+  		<b>Departments:</b>
+		<br>
+		<ul>
+		<% @employee.departments.each do |d| %>
+			<li><%= link_to d.display_name, d %>
+		<% end %>
+		</ul>
+	</p>
+	<p>
+		<b>Trainer:</b>
+		<%= @employee.trainer %>
+	</p>
+	<p>
+  		<b>Active:</b>
+  		<%= @employee.active %>
+	</p>
+</div>
+<div class="content">
+     <table class="zebra-striped">
+		<thead>
+			<tr>
+				<th>Document</th>
+				<th>Trained on</th>
+				<th>Trainer</th>
+				<th>Status</th>
+				<th>Expires</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @employee.trainings.each do |training| %>
+			<tr>
+		    	<td><%= link_to training.document.number, training.document, :title => training.document.name, :rel => 'twipsy' %></td>
+			    <td><%= training.trained_on %></td>
+			    <td><%= (training.trainer ? training.trainer.username : '') %></td>
+			    <td><%= render :partial => 'trainings/status', :object => training.status %></td>
+			    <td><%= training.expires %></td>
+			    <td><%= link_to 'Show', training %></td>
+			    <td><%= link_to 'Edit', edit_training_path(training) %></td>
+			    <td><%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+	<p><%= link_to 'New Training', new_training_path %></p>	
+</div>
+</div>
+</section>

@@ -1,25 +1,21 @@
 <h1>Training Details</h1>
 
+<div class="well">
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Training ID:</b>
-  <%= @training.id %>
+  <%= @training.id %> (<%= link_to 'Edit', edit_training_path(@training) %> / <%= link_to 'Destroy', @training, :confirm => 'Are you sure?', :method => :delete %>)
 </p>
 
 <p>
   <b>Document:</b>
-  <%= @training.document.full_name %>
+  <%= link_to @training.document.full_name, @training.document %>
 </p>
 
 <p>
   <b>Employee:</b>
-  <%= @training.employee.full_name %>
-</p>
-
-<p>
-  <b>Trained on:</b>
-  <%= @training.trained_on %>
+  <%= link_to @training.employee.full_name, @training.employee %>
 </p>
 
 <p>
@@ -28,15 +24,24 @@
 </p>
 
 <p>
-  <b>Status:</b>
-  <%= render :partial => 'statuses/status', :locals => { :status => @training.status } %>
+  <b>Trained on:</b>
+  <%= @training.trained_on %>
 </p>
 
 <p>
   <b>Expires:</b>
-  <%= @training.expires %>
+  	<% if(!@training.trained_on.blank?) %>
+	After <%= @training.expires %> months on
+	<%= @training.trained_on.advance(:months => @training.expires) %>
+	<% end %>
 </p>
 
+<p>
+  <b>Current Status:</b>
+  <%= render :partial => "status", :object => @training.status %>	
+</p>
 
-<%= link_to 'Edit', edit_training_path(@training) %> |
-<%= link_to 'Back', trainings_path %>
+</div>
+
+<p><%= link_to 'All Training', trainings_path %>
+

@@ -6,9 +6,12 @@
 <%= render_tree @departments_tree do |node, child| %>
 	<li>
 		<%= link_to node.name, department_path(node) %> 
-		<small>(<%= link_to 'U', department_moveleft_path(node) %>/<%= link_to 'D', department_moveright_path(node) %>/<%= link_to 'Edit', edit_department_path(node) %>)</small>
+		<small>(<%= link_to 'U', department_moveleft_path(node) %>/<%= link_to 'D', department_moveright_path(node) %>/<%= link_to 'Edit', edit_department_path(node) %>/<%= link_to 'Destroy', department_path(node), :confirm => 'Are you sure?', :method => :delete %>)</small>
 	</li>
   <%= child %>
 <% end %>
 
-<%= link_to 'New Department', new_department_path %>
+
+<% content_for :nav do %>
+  <li><%= link_to 'New Department', new_department_path %></li>
+<% end %>

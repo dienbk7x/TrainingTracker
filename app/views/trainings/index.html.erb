@@ -1,35 +1,38 @@
-<h1>Training Records</h1>
+<h1>All Training Records</h1>
 
-<table>
-  <tr>
-	<th>ID</th>
-    <th>Document</th>
-	<th>Department</th>
-    <th>Employee</th>
-    <th>Trained on</th>
-    <th>Trainer</th>
-    <th>Status</th>
-    <th>Expires</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @trainings.each do |training| %>
-  <tr>
-	<td><%= training.id %></td>
-    <td><%= link_to training.document.full_name, training.document %></td>
-	<td><%= training.document.department.display_name %></td>
-    <td><%= link_to training.employee.full_name, training.employee %></td>
-    <td><%= training.trained_on %></td>
-    <td><%= (training.trainer ? training.trainer.username : '') %></td>
-    <td><%= render :partial => 'statuses/status', :locals => { :status => training.status } %></td>
-    <td><%= training.expires %></td>
-    <td><%= link_to 'Show', training %></td>
-    <td><%= link_to 'Edit', edit_training_path(training) %></td>
-    <td><%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table class="zebra-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Document</th>
+			<th>Department</th>
+			<th>Employee</th>
+			<th>Trained on</th>
+			<th>Trainer</th>
+			<th>Status</th>
+			<th>Expires</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @trainings.each do |training| %>
+		<tr>
+			<td><%= link_to training.id, training %></td>
+			<td><%= link_to training.document.number, training.document, :title => training.document.name, :rel => 'twipsy' %></td>
+			<td><%= (training.document.department ? training.document.department.display_name : '') %></td>
+			<td><%= link_to training.employee.full_name, training.employee %></td>
+			<td><%= training.trained_on %></td>
+			<td><%= (training.trainer ? training.trainer.username : '') %></td>
+			<td><%= render :partial => "status", :object => training.status %>	</td>
+			<td><%= training.expires %></td>
+			<td><%= link_to 'Show', training %></td>
+			<td><%= link_to 'Edit', edit_training_path(training) %></td>
+			<td><%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br />

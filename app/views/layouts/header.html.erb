@@ -1,28 +1,33 @@
-
-
 <div class="topbar">
-   <div class="topbar-inner">
-    <div class="container-fluid">
-      <a class="brand" href="#">Incom Training</a>
-      <ul class="nav">
-		<ul class="nav">
-		  <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle">Training</a>
-            <ul class="dropdown-menu">
-              <% 
-				dept = Department.root.self_and_siblings 
-				dept.each do |d|
-				%>
-				<li><a href="<%= trainings_path %>/grid/<%= d.id %>"><%= d.name %></a></li>
-				<% end %>
-            </ul>
-          </li>
-        </ul>
-        <li class=""><a href="<%= departments_path %>">Departments</a></li>
-        <li class=""><a href="<%= employees_path %>">Employees</a></li>
-		<li class=""><a href="<%= documents_path %>">Documents</a></li>
-		
-      </ul>
-    </div>
-  </div>
+	<div class="topbar-inner">
+		<div class="<%= content_for?(:grid) ? yield(:grid) : 'container' %>">
+			<a class="brand" href="#">Incom Training</a>
+			<ul class="nav">
+				<ul class="nav">
+					<li class="dropdown" data-dropdown="dropdown">
+						<a href="#" class="dropdown-toggle">Training</a>
+						<ul class="dropdown-menu">
+							<% dept = Department.root.self_and_siblings %>
+							<% dept.each do |d| %>
+							<li><a href="<%= trainings_path %>/grid/<%= d.id %>"><%= d.name %></a></li>
+							<% end %>
+						</ul>
+					</li>
+				</ul>
+				<li class=""><a href="<%= departments_path %>">Departments</a></li>
+				<li class=""><a href="<%= employees_path %>">Employees</a></li>
+				<li class=""><a href="<%= documents_path %>">Documents</a></li>
+			</ul>
+			<% if content_for?(:nav) %>
+			<ul class="nav secondary-nav">
+				<li class="dropdown" data-dropdown="dropdown">
+					<a href="#" class="dropdown-toggle">Admin Actions</a>
+					<ul class="dropdown-menu">
+						<%= yield :nav %>
+					</ul>
+				</li>	
+			</ul>
+			<% end %>
+		</div>
+	</div>
 </div>

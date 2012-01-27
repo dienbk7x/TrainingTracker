@@ -21,3 +21,21 @@
 .footer p {
   color: #555;
 }
+
+.label a { color: white; }
+
+td.default {
+  background-color: #bfbfbf;
+}
+td.important {
+  background-color: #c43c35;
+}
+td.warning {
+  background-color: #f89406;
+}
+td.success {
+  background-color: #46a546;
+}
+td.notice {
+  background-color: #62cffc;
+}

@@ -1,8 +1,0 @@
-<h1>Training Grid by Department</h1>
-
-<%= render_tree @departments_tree do |node, child| %>
-	<li>
-		<%= node.name %> (<%= node.training_count %>)
-	</li>
-  <%= child %>
-<% end %>

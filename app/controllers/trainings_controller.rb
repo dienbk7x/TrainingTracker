@@ -23,8 +23,6 @@ class TrainingsController < ApplicationController
    
     @employees = Employee.includes(:departments, { :trainings => { :document => :department } })
     @employees = @employees.where('departments_employees.department_id' => @departments).order('last_name ASC')
-    
-    @statuses = Status.all
   
     respond_to do |format|
       format.html # grid.html.erb
@@ -48,8 +46,12 @@ class TrainingsController < ApplicationController
   def new
     @training = Training.new
     #@training.trained_on = Time.now 
-    @training.employee = Employee.find(params[:employee])
-    @training.document = Document.find(params[:document])
+    if(params[:employee]) 
+      @training.employee = Employee.find(params[:employee])
+    end
+    if(params[:document])
+      @training.document = Document.find(params[:document])
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,7 +62,7 @@ class TrainingsController < ApplicationController
   # GET /trainings/1/edit
   def edit
     @training = Training.find(params[:id])
-    @training.trained_on ||= Time.now
+    #@training.trained_on ||= Date.today
   end
 
   # POST /trainings
@@ -83,7 +85,7 @@ class TrainingsController < ApplicationController
   # PUT /trainings/1.xml
   def update
     @training = Training.find(params[:id])
-
+    
     respond_to do |format|
       if @training.update_attributes(params[:training])
         format.html { redirect_to(@training, :notice => 'Training was successfully updated.') }
