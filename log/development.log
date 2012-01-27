@@ -37641,3 +37641,34 @@ Served asset /application.css - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js" for 127.0.0.1 at 2012-01-26 16:32:00 -0500
 Served asset /application.js - 304 Not Modified (0ms)
+  [1m[36m (6.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateDepartments (20110105023735)
+Migrating to CreateEmployees (20110105023825)
+Migrating to ModifyEmployees (20110105111144)
+Migrating to CreateDocuments (20110105141748)
+Migrating to CreateTrainingTypes (20110105141834)
+Migrating to ChangeDocumentNumberField (20110105144438)
+Migrating to CreateTrainings (20110105151408)
+Migrating to AddTrainerBoolToEmployee (20110105163727)
+Migrating to AddColorToStatus (20110105164444)
+Migrating to AddDepartmentsEmployeesHabtmTable (20110108010317)
+Migrating to RemoveTrainingTypes (20110109160619)
+Migrating to RemoveDescriptionFromDocument (20110109161335)
+Migrating to CreateDocumentGroups (20110109161758)
+Migrating to AddNestedSetToDepartments (20110118155924)
+Migrating to RemoveTimestampsFromDepartments (20110118160513)
+Migrating to RemoveDocumentGroups (20110727163949)
+Migrating to AddDepartmentToDocuments (20110727164133)
+Migrating to DropStatus (20120127124647)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  DROP TABLE "statuses"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120127124647')[0m
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("departments")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("departments_employees")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("documents")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("employees")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("trainings")[0m

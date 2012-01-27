@@ -1,10 +1,8 @@
-TrainingTracker2::Application.routes.draw do
+TrainingTracker::Application.routes.draw do
 
   scope "/admin" do
   end
-  
-  resources :statuses
-  resources :departments
+    resources :departments
     match 'departments/moveleft/:id' => 'departments#moveleft', :as => :department_moveleft
     match 'departments/moveright/:id' => 'departments#moveright', :as => :department_moveright
   resources :trainings
